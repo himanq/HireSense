@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HireSenseAI — Resume Improver for Freshers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+ 
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <button class="logo-btn" onclick="scrollToSection('hero')">
+      <div class="logo-icon">H</div>
+      <span class="logo-text">HireSense<span>AI</span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
+      <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
+      <button class="nav-btn" onclick="openModal('contactModal')">Contact</button>
+    </div>
+    <button class="btn btn-blue" onclick="scrollToSection('analyzer')">Get Started →</button>
+  </div>
+</nav>
+ 
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <!-- static gradient bg — much faster than animated orbs -->
+  <div style="position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 60% at 20% 30%, rgba(29,78,216,.12) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 80% 60%, rgba(6,182,212,.07) 0%, transparent 70%);pointer-events:none"></div>
+  <div class="grid-bg"></div>
+ 
+  <div class="hero-inner">
+    <div class="hero-badge-wrap">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Smart AI Analysis &nbsp;·&nbsp; Built for Freshers &nbsp;·&nbsp; 
+        <strong style="color:#a78bfa;margin-left:4px"></strong>
+      </div>
+    </div>
+ 
+    <h1 class="hero-title">
+      Land Your Dream Job with<br>
+      <span class="shimmer">AI-Powered Resume</span><br>
+      Improvement
+    </h1>
+ 
+    <p class="hero-sub">
+      Paste your resume — our AI instantly finds mistakes, rewrites weak bullets,
+      checks ATS compatibility, and delivers a full Pro rewrite on screen.
+    </p>
+ 
+    <div class="hero-btns">
+      <button class="btn btn-blue" style="padding:14px 30px;border-radius:12px;font-size:16px" onclick="scrollToSection('analyzer')">⚡ Analyze My Resume Free</button>
+      <button class="btn btn-ghost" style="padding:14px 26px;border-radius:12px;font-size:16px" onclick="openModal('sampleModal')">View Sample Report →</button>
+    </div>
+ 
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">12,000+</div><div class="stat-lbl">Resumes Analyzed</div></div>
+      <div class="stat"><div class="stat-num">94%</div><div class="stat-lbl">ATS Pass Rate</div></div>
+      <div class="stat"><div class="stat-num">3.2×</div><div class="stat-lbl">More Interviews</div></div>
+      <div class="stat"><div class="stat-num">₹100</div><div class="stat-lbl">Full Pro Rewrite</div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════
+     FEATURES
+══════════════════════════════════════ -->
+<section id="features">
+  <div class="sec-inner" style="text-align:center">
+    <div class="s-tag">✦ Features</div>
+    <h2 class="sec-title">Everything You Need to Get Hired</h2>
+    <div class="features-grid">
+      <div class="card"><div class="feat-icon" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3)">📊</div><h4>Instant ATS Score</h4><p>Know exactly where your resume stands with a detailed score breakdown</p></div>
+      <div class="card"><div class="feat-icon" style="background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.3)">✍️</div><h4>Smart Bullet Rewrites</h4><p>Weak bullets transformed into powerful, metric-driven achievements</p></div>
+      <div class="card"><div class="feat-icon" style="background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.3)">🎯</div><h4>Skill Gap Radar</h4><p>Identify exactly which in-demand skills are missing from your resume</p></div>
+      <div class="card"><div class="feat-icon" style="background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.3)">💳</div><h4>Pay Once, Get Instantly</h4><p>Pay ₹100 via UPI, enter UTR + email — Pro report on screen in seconds</p></div>
+      <div class="card"><div class="feat-icon" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.3)">📄</div><h4>Full Resume Rewrite</h4><p>Complete rewrite with cover letter, JD versions, and LinkedIn content</p></div>
+      <div class="card"><div class="feat-icon" style="background:rgba(236,72,153,.15);border-color:rgba(236,72,153,.3)">🔒</div><h4>100% Private</h4><p>Your resume is analyzed locally — never stored or shared anywhere</p></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════
+     PRICING
+══════════════════════════════════════ -->
+<section id="pricing">
+  <div class="sec-inner narrow" style="text-align:center">
+    <div class="s-tag">✦ Pricing</div>
+    <h2 class="sec-title">Student-Friendly Pricing</h2>
+    <p class="sec-sub">Less than a chai ☕ — pay once via UPI, report instantly on screen.</p>
+    <div class="pricing-grid">
+      <!-- Basic -->
+      <div class="price-card">
+        <p class="plan-desc">Quick ATS check</p>
+        <h3 class="plan-name">Basic</h3>
+        <div class="plan-price"><span style="color:#06b6d4">₹50</span><span class="plan-period">/ one-time</span></div>
+        <ul class="plan-features">
+          <li>ATS Score (0–100)</li>
+          <li>4-5 Issues Detected</li>
+          <li>Missing Skills List</li>
+          <li>4 Pro Tips</li>
+        </ul>
+        <button class="btn btn-ghost" style="width:100%;padding:12px;border-radius:11px;font-size:14px" onclick="openPayModal({name:'Basic',price:50})">Get Basic — ₹50</button>
+      </div>
+      <!-- Pro -->
+      <div class="price-card featured">
+        <div class="popular-badge">MOST POPULAR</div>
+        <p class="plan-desc">Full AI rewrite + everything</p>
+        <h3 class="plan-name">Pro</h3>
+        <div class="plan-price"><span style="color:#22d3ee">₹100</span><span class="plan-period">/ one-time</span></div>
+        <ul class="plan-features">
+          <li>Everything in Basic</li>
+          <li>✦ Full Resume Rewrite</li>
+          <li>✦ Cover Letter</li>
+          <li>✦ 3 JD Tailored Versions</li>
+          <li>✦ LinkedIn Headline + About</li>
+        </ul>
+        <button class="btn btn-blue" style="width:100%;padding:12px;border-radius:11px;font-size:14px" onclick="openPayModal({name:'Pro Report',price:100})">Get Pro — ₹100 ✦</button>
+      </div>
+    </div>
+    <p style="color:#334155;font-size:12px;margin-top:16px">🔐 UPI Payment · UTR Verification · Instant delivery</p>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════
+     ANALYZER
+══════════════════════════════════════ -->
+<section id="analyzer">
+  <div class="sec-inner narrow" style="text-align:center">
+    <div class="s-tag">✦ Resume Analyzer</div>
+    <h2 class="sec-title">Paste Your Resume</h2>
+    <p class="sec-sub">Free instant analysis · Smart AI · 100% private · No signup</p>
+    <div class="textarea-wrap">
+      <div class="textarea-inner">
+        <textarea id="resumeInput" class="resume-ta" placeholder="Paste your resume here...
+ 
+Include education, skills, work experience, and projects for the most accurate analysis."></textarea>
+        <div class="ta-footer">
+          <span id="wordCount" class="wc-text">Plain text · PDF paste · LinkedIn export</span>
+          <button class="btn btn-blue" id="analyzeBtn" style="padding:11px 26px;border-radius:11px;font-size:15px" onclick="doAnalyze()">⚡ Analyze Free</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════
+     LOADER
+══════════════════════════════════════ -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-ring-wrap">
+      <svg class="spin-svg" width="72" height="72" viewBox="0 0 72 72">
+        <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(37,99,235,.14)" stroke-width="4"/>
+        <circle cx="36" cy="36" r="30" fill="none" stroke="url(#lg)" stroke-width="4" stroke-dasharray="46 142" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1d4ed8"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="loader-emoji">🔍</div>
+    </div>
+    <h3 class="loader-title">Analyzing your resume...</h3>
+    <p id="loaderStep" class="loader-step">› Scanning resume...</p>
+    <div class="loader-bar-bg"><div id="loaderBar" class="loader-bar"></div></div>
+    <div class="dot-row">
+      <div class="dot-el"></div>
+      <div class="dot-el"></div>
+      <div class="dot-el"></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════
+     FREE RESULTS
+══════════════════════════════════════ -->
+<section id="results-section" style="display:none">
+  <div class="sec-inner" style="text-align:center;margin-bottom:36px">
+    <div class="s-tag">✦ Free Analysis</div>
+    <h2 class="sec-title">Your Resume Report</h2>
+  </div>
+  <div class="sec-inner">
+    <!-- ATS + Issues row -->
+    <div class="rg-2col">
+      <!-- ATS card -->
+      <div class="r-card ats-card">
+        <div class="ats-label">ATS Score</div>
+        <div class="score-ring">
+          <svg width="86" height="86" viewBox="0 0 86 86">
+            <circle cx="43" cy="43" r="34" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="6"/>
+            <circle id="scoreCircle" cx="43" cy="43" r="34" fill="none" stroke="#22c55e" stroke-width="6"
+              stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round"
+              style="transition:stroke-dashoffset 1.3s cubic-bezier(.22,1,.36,1);transform:rotate(-90deg);transform-origin:center"/>
+          </svg>
+          <div class="score-val"><span id="scoreNum">0</span></div>
+        </div>
+        <span id="scoreLabel" class="score-badge">Good</span>
+        <!-- Sub scores -->
+        <div class="sub-scores">
+          <div class="sub-row"><div class="sub-lbl"><span>Keywords</span><span id="kwVal">0%</span></div><div class="bar-bg"><div id="kwBar" class="bar-fill" style="background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div></div>
+          <div class="sub-row"><div class="sub-lbl"><span>Formatting</span><span id="fmtVal">0%</span></div><div class="bar-bg"><div id="fmtBar" class="bar-fill" style="background:linear-gradient(90deg,#22d3ee,#67e8f9)"></div></div></div>
+          <div class="sub-row"><div class="sub-lbl"><span>Readability</span><span id="rdVal">0%</span></div><div class="bar-bg"><div id="rdBar" class="bar-fill" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
+        </div>
+      </div>
+      <!-- Issues card -->
+      <div class="r-card">
+        <div class="card-header">
+          <div class="card-icon" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.2)">⚠️</div>
+          <h3>Issues Found</h3>
+          <span id="mistakeCount" class="badge-red">0 issues</span>
+        </div>
+        <div id="mistakesList"></div>
+      </div>
+    </div>
+ 
+    <!-- Bullets + Skills row -->
+    <div class="rg-2col2">
+      <div class="r-card" style="animation-delay:.16s">
+        <div class="card-header">
+          <div class="card-icon" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.2)">✨</div>
+          <h3>Improved Bullets</h3>
+          <span class="badge-green">AI Rewritten</span>
+        </div>
+        <div id="bulletsList"></div>
+      </div>
+      <div class="r-card" style="animation-delay:.22s">
+        <div class="card-header">
+          <div class="card-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2)">🎯</div>
+          <h3>Missing Skills</h3>
+        </div>
+        <div id="skillsList"></div>
+        <div class="tip-box" style="margin-top:14px">
+          <p>💡 Adding 3–4 of these could boost your match rate by <strong>~40%</strong></p>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Tips -->
+    <div class="r-card" style="animation-delay:.28s;margin-bottom:16px">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2)">💎</div>
+        <h3>Pro Tips</h3>
+      </div>
+      <div id="tipsList" class="tips-grid"></div>
+    </div>
+ 
+    <!-- Upgrade CTA -->
+    <div class="upgrade-cta">
+      <div>
+        <div class="pro-badge">🚀 UPGRADE TO PRO</div>
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:5px">Get your full resume rewritten instantly</h3>
+        <p style="font-size:13px;color:#64748b">Pay ₹100 → Enter UTR + Email → Pro Report on screen in seconds</p>
+      </div>
+      <button class="btn btn-blue" style="padding:13px 28px;border-radius:12px;font-size:15px;white-space:nowrap" onclick="openPayModal({name:'Pro Report',price:100})">Get Pro Report — ₹100 ✦</button>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════
+     PRO REPORT
+══════════════════════════════════════ -->
+<div id="pro-section" style="display:none;padding:56px 24px 100px;border-top:2px solid rgba(37,99,235,.2)">
+  <div class="pro-inner">
+    <div style="text-align:center;margin-bottom:36px">
+      <div style="display:flex;justify-content:center;margin-bottom:16px">
+        <div class="pro-badge" style="font-size:13px;padding:6px 18px">🚀 PRO REPORT DELIVERED</div>
+      </div>
+      <h2 style="font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:10px">
+        Your Complete <span class="shimmer">Pro Report</span>
+      </h2>
+      <div id="proMeta"></div>
+      <div id="salaryInfo" style="margin-top:8px"></div>
+    </div>
+ 
+    <div class="tabs" id="proTabs">
+      <button class="tab active" onclick="switchTab('resume')">📄 Resume</button>
+      <button class="tab" onclick="switchTab('cover')">✉️ Cover Letter</button>
+      <button class="tab" onclick="switchTab('jd')">🎯 JD Versions</button>
+      <button class="tab" onclick="switchTab('linkedin')">💼 LinkedIn</button>
+    </div>
+ 
+    <div id="tab-resume" class="tab-pane active">
+      <div class="pro-card">
+        <div class="card-header" style="margin-bottom:14px">
+          <div><h3 style="font-size:1rem;font-weight:700;margin-bottom:3px">📄 Fully Rewritten Resume</h3><p style="font-size:12px;color:#64748b">All bullets rewritten with action verbs + metrics</p></div>
+          <button class="copy-btn" onclick="copyEl('resumeContent')">📋 Copy</button>
+        </div>
+        <div id="resumeContent" class="code-box"></div>
+        <div class="tip-box" style="margin-top:11px"><p style="color:#86efac">✅ Copy → paste into Google Docs or Word for best results</p></div>
+      </div>
+    </div>
+ 
+    <div id="tab-cover" class="tab-pane">
+      <div class="pro-card">
+        <div class="card-header" style="margin-bottom:14px">
+          <div><h3 style="font-size:1rem;font-weight:700;margin-bottom:3px">✉️ Personalized Cover Letter</h3><p style="font-size:12px;color:#64748b">Tailored to your experience — ready to send</p></div>
+          <button class="copy-btn" onclick="copyEl('coverContent')">📋 Copy</button>
+        </div>
+        <div id="coverContent" class="code-box"></div>
+      </div>
+    </div>
+ 
+    <div id="tab-jd" class="tab-pane"><div id="jdContent"></div></div>
+ 
+    <div id="tab-linkedin" class="tab-pane">
+      <div class="pro-card" style="margin-bottom:13px">
+        <div class="card-header" style="margin-bottom:13px">
+          <h3 style="font-size:1rem;font-weight:700">💼 LinkedIn Headline</h3>
+          <button class="copy-btn" onclick="copyEl('liHeadline')">📋 Copy</button>
+        </div>
+        <div id="liHeadline" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:13px 16px;font-size:14px;font-weight:600;color:#e2e8f0"></div>
+      </div>
+      <div class="pro-card">
+        <div class="card-header" style="margin-bottom:13px">
+          <h3 style="font-size:1rem;font-weight:700">📝 LinkedIn About</h3>
+          <button class="copy-btn" onclick="copyEl('liSummary')">📋 Copy</button>
+        </div>
+        <div id="liSummary" class="code-box"></div>
+      </div>
+    </div>
+ 
+    <div class="tip-box" style="margin-top:18px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:16px">💡</span>
+      <p style="font-size:12px">Copy any section → paste into <strong style="color:#94a3b8">Google Docs</strong> for a formatted document</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <button class="logo-btn" onclick="scrollToSection('hero')">
+      <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:8px">H</div>
+      <span style="font-family:'Syne',sans-serif;font-weight:700;color:#334155;font-size:14px">HireSenseAI</span>
+    </button>
+    <p style="color:#1e293b;font-size:13px">Built for students · Smart AI · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
+    <div style="display:flex;gap:18px">
+      <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
+      <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
+      <button class="nav-btn" onclick="openModal('contactModal')">Contact</button>
+    </div>
+  </div>
+</footer>
+ 
+<!-- ══════════════════════════════════════
+     MODALS
+══════════════════════════════════════ -->
+ 
+<!-- Payment Modal -->
+<div id="payModal" class="overlay" onclick="overlayClick(event,'payModal')">
+  <div class="modal narrow">
+    <button class="modal-close" onclick="closeModal('payModal')">×</button>
+    <div style="text-align:center;margin-bottom:22px">
+      <div style="font-size:30px;margin-bottom:8px">💳</div>
+      <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Payment Confirm Karo</h2>
+      <p style="color:#64748b;font-size:13px">UPI se pay karo → UTR + email daalo → Report turant milega</p>
+    </div>
+    <!-- UPI Box -->
+    <div class="upi-box">
+      <div style="font-size:11px;color:#64748b;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px">UPI Payment Details</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div>
+          <div style="font-size:11px;color:#64748b;margin-bottom:2px">Pay to (UPI ID)</div>
+          <div style="font-size:15px;font-weight:700;color:#e2e8f0;font-family:monospace" id="upiDisplay"></div>
+        </div>
+        <button class="btn btn-ghost" style="padding:7px 14px;border-radius:8px;font-size:12px" onclick="copyUPI()">📋 Copy</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:11px;color:#64748b;margin-bottom:2px">Amount</div>
+          <div id="payAmount" style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:#22d3ee"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:#64748b;margin-bottom:4px">Pay via</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+            <span class="app-chip">GPay</span>
+            <span class="app-chip">PhonePe</span>
+            <span class="app-chip">Paytm</span>
+            <span class="app-chip">BHIM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Form -->
+    <div style="display:flex;flex-direction:column;gap:11px">
+      <div>
+        <label class="field-label">Tera Naam *</label>
+        <input class="inp" id="payName" placeholder="Jaise: Rahul Sharma"/>
+      </div>
+      <div>
+        <label class="field-label">Tera Email *</label>
+        <input class="inp" id="payEmail" type="email" placeholder="Jaise: rahul@gmail.com"/>
+        <p class="field-hint">📬 Himanshu isi pe tera Pro Report bhejega</p>
+      </div>
+      <div>
+        <label class="field-label">UTR / Transaction ID *</label>
+        <input class="inp" id="payUTR" placeholder="Jaise: 429817364521" style="font-family:monospace;font-size:15px;letter-spacing:.05em"/>
+        <p class="field-hint">💡 GPay/PhonePe → Transaction History → UTR number</p>
+      </div>
+      <div class="info-box">
+        <p style="font-size:12px;color:#64748b;line-height:1.8">
+          🔍 Himanshu tera UTR verify karega<br>
+          📧 Verified hone pe Pro Report teri email pe aayega<br>
+          ⚡ Screen pe bhi turant dikha denge
+        </p>
+      </div>
+      <button class="btn btn-green" id="paySubmitBtn" style="padding:14px;border-radius:12px;font-size:15px" onclick="submitPayment()">
+        ✅ Payment Confirm Karo
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<!-- Payment Success Modal -->
+<div id="payDoneModal" class="overlay" onclick="overlayClick(event,'payDoneModal')">
+  <div class="modal narrow" style="text-align:center">
+    <button class="modal-close" onclick="closeModal('payDoneModal')">×</button>
+    <div style="font-size:52px;margin-bottom:14px">🎉</div>
+    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px">Payment Confirm Ho Gaya!</h2>
+    <p style="color:#94a3b8;font-size:14px;margin-bottom:16px;line-height:1.7">
+      Himanshu ko tera UTR aur email mil gaya.<br>
+      <strong style="color:#22d3ee">Pro Report neeche screen pe bhi hai!</strong>
+    </p>
+    <div id="payDoneMeta" class="success-meta"></div>
+    <button class="btn btn-blue" style="width:100%;padding:12px;border-radius:11px;font-size:15px;margin-top:16px" onclick="closeModal('payDoneModal')">
+      Pro Report Dekho ↓
+    </button>
+  </div>
+</div>
+ 
+<!-- Contact Modal -->
+<div id="contactModal" class="overlay" onclick="overlayClick(event,'contactModal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contactModal')">×</button>
+    <div id="contactForm">
+      <div class="s-tag" style="margin-bottom:10px">📩 Contact</div>
+      <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Himanshu se Baat Karo</h2>
+      <p style="color:#64748b;font-size:13px;margin-bottom:20px">Form bharo aur Send karo — message seedha Himanshu ke inbox mein jayega.</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <input class="inp" id="cName" placeholder="Tera naam *"/>
+        <input class="inp" id="cEmail" type="email" placeholder="Tera email * (reply yahan aayega)"/>
+        <textarea class="inp" id="cMsg" placeholder="Tera message *..." rows="4" style="resize:vertical;min-height:100px"></textarea>
+        <button class="btn btn-blue" id="contactSendBtn" style="padding:13px;border-radius:12px;font-size:15px" onclick="sendContact()">
+          📩 Send Message
+        </button>
+      </div>
+    </div>
+    <div id="contactDone" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-size:56px;margin-bottom:16px">✅</div>
+      <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px">Message Bhej Diya!</h2>
+      <p style="color:#64748b;font-size:14px;margin-bottom:6px">Himanshu ko turant notification mil gaya.</p>
+      <p id="contactReplyEmail" style="color:#22d3ee;font-size:13px;margin-bottom:24px"></p>
+      <button class="btn btn-blue" style="padding:12px 28px;border-radius:11px;font-size:15px" onclick="closeModal('contactModal')">Done ✓</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- Sample Modal -->
+<div id="sampleModal" class="overlay" onclick="overlayClick(event,'sampleModal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('sampleModal')">×</button>
+    <div class="s-tag" style="margin-bottom:10px">📄 Sample</div>
+    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:14px">Here's What You'll Get</h2>
+    <div class="sample-list">
+      <div class="sample-item"><span class="sample-icon">📊</span><div><div class="sample-lbl">ATS Score</div><div class="sample-val">Real score 0–100 with breakdown</div></div><span class="sample-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></span></div>
+      <div class="sample-item"><span class="sample-icon">⚠️</span><div><div class="sample-lbl">Issues Found</div><div class="sample-val">Specific problems in YOUR resume</div></div><span class="sample-dot" style="background:#ef4444;box-shadow:0 0 8px #ef4444"></span></div>
+      <div class="sample-item"><span class="sample-icon">✨</span><div><div class="sample-lbl">Bullet Rewrites</div><div class="sample-val">Before → After with metrics</div></div><span class="sample-dot" style="background:#22d3ee;box-shadow:0 0 8px #22d3ee"></span></div>
+      <div class="sample-item"><span class="sample-icon">🎯</span><div><div class="sample-lbl">Missing Skills</div><div class="sample-val">In-demand skills you're missing</div></div><span class="sample-dot" style="background:#a78bfa;box-shadow:0 0 8px #a78bfa"></span></div>
+      <div class="sample-item"><span class="sample-icon">🚀</span><div><div class="sample-lbl">Pro Report (₹100)</div><div class="sample-val">Full rewrite + cover letter + LinkedIn</div></div><span class="sample-dot" style="background:#22c55e;box-shadow:0 0 8px #22c55e"></span></div>
+    </div>
+    <button class="btn btn-blue" style="width:100%;padding:13px;border-radius:12px;font-size:15px;margin-top:18px" onclick="closeModal('sampleModal');scrollToSection('analyzer')">⚡ Analyze My Resume Free</button>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════
+     TOAST
+══════════════════════════════════════ -->
+<div id="toast">
+  <span id="toastIcon"></span>
+  <span id="toastMsg"></span>
+</div>
+ 
+<script src="script.js"></script>
+</body>
+</html>
