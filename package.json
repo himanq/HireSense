@@ -1,0 +1,12 @@
+{
+  "name": "hiresense",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Client-side heuristic resume review toolkit",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
