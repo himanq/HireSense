@@ -189,13 +189,19 @@ function doAnalyze() {
 
   setTimeout(() => {
     clearInterval(stepTimer);
-    const data = window.HireSenseAnalyzer.analyzeResume(text);
-    window._lastAnalysis = data;
-    window._lastAnalysisText = text;
-    document.getElementById("loader").classList.remove("show");
-    renderResults(data);
-    document.getElementById("results-section").style.display = "block";
-    setTimeout(() => document.getElementById("results-section").scrollIntoView({ behavior: "smooth" }), 80);
+    try {
+      const data = window.HireSenseAnalyzer.analyzeResume(text);
+      window._lastAnalysis = data;
+      window._lastAnalysisText = text;
+      renderResults(data);
+      document.getElementById("results-section").style.display = "block";
+      setTimeout(() => document.getElementById("results-section").scrollIntoView({ behavior: "smooth" }), 80);
+    } catch (error) {
+      console.error("HireSense analysis failed:", error);
+      showToast("Analysis failed. Please refresh the page and try again.", "warn");
+    } finally {
+      document.getElementById("loader").classList.remove("show");
+    }
   }, 1300);
 }
  
