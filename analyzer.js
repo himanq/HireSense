@@ -77,13 +77,12 @@ function analyzeResume(input) {
   };
 
   const technologies = [];
-  // Match technology names as terms, not arbitrary substrings (e.g. Java must not match JavaScript).
+  // Match complete technology terms so Java does not match JavaScript.
+  const normalizedText = " " + lower.replace(/[^a-z0-9+#.]+/g, " ").trim() + " ";
   for (const [needle, label] of Object.entries(TECH_MAP)) {
-    const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\  for (const [needle, label] of Object.entries(TECH_MAP)) {
-    if (has(needle) && !technologies.includes(label)) technologies.push(label);
-  }");
-    const termPattern = new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "i");
-    if (termPattern.test(text) && !technologies.includes(label)) technologies.push(label);
+    const normalizedNeedle = needle.toLowerCase().replace(/[^a-z0-9+#.]+/g, " ").trim();
+    if (normalizedNeedle && normalizedText.includes(" " + normalizedNeedle + " ") &&
+        !technologies.includes(label)) technologies.push(label);
   }
 
   const isML = ["machine learning", "tensorflow", "pytorch", "data science"].some(has);
