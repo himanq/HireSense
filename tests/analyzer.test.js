@@ -31,6 +31,20 @@ test("detects relevant sections and technologies without throwing", () => {
   assert.ok(result.atsScore >= 0 && result.atsScore <= 100);
 });
 
+test("technology detection matches complete terms instead of substrings", () => {
+  const jsOnly = analyzeResume("Skills\nJavaScript");
+  assert.ok(jsOnly._meta.techs.includes("JavaScript"));
+  assert.ok(!jsOnly._meta.techs.includes("Java"));
+
+  const javaOnly = analyzeResume("Skills\nJava");
+  assert.ok(javaOnly._meta.techs.includes("Java"));
+  assert.ok(!javaOnly._meta.techs.includes("JavaScript"));
+
+  const node = analyzeResume("Skills\nNode.js and C++");
+  assert.ok(node._meta.techs.includes("Node.js"));
+  assert.ok(node._meta.techs.includes("C++"));
+});
+
 test("bullet suggestions do not fabricate achievements or metrics", () => {
   const resume = "Projects\nWorked on a Python dashboard and fixed input validation issues.";
   const result = analyzeResume(resume);
