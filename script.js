@@ -250,7 +250,7 @@ function renderResults(data) {
     const div = document.createElement("div");
     div.className = "issue-item";
     div.style.animationDelay = (i * 0.06) + "s";
-    div.innerHTML = `<span class="tag" style="background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.color}22">${cfg.label}</span><span class="issue-text">${m.text}</span>`;
+    div.innerHTML = `<span class="tag" style="background:${cfg.bg};color:${cfg.color};border:1px solid ${cfg.color}22">${cfg.label}</span><span class="issue-text">${escHtml(m.text)}</span>`;
     ml.appendChild(div);
   });
  
@@ -274,7 +274,7 @@ function renderResults(data) {
     const chip = document.createElement("div");
     chip.className = "skill-chip";
     chip.style.animationDelay = (i * 0.05) + "s";
-    chip.innerHTML = `<span style="font-size:13px;font-weight:600;color:#e2e8f0">${s.skill}</span><span style="font-size:11px;color:${catColors[s.category]||"#64748b"}">${s.category}</span>`;
+    chip.innerHTML = `<span style="font-size:13px;font-weight:600;color:#e2e8f0">${escHtml(s.skill)}</span><span style="font-size:11px;color:${catColors[s.category]||"#64748b"}">${escHtml(s.category)}</span>`;
     sl2.appendChild(chip);
   });
  
