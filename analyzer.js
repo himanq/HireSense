@@ -68,7 +68,7 @@ function analyzeResume(input) {
     phone: hasRx(/(?:\+91[\s-]?)?(?:0)?[6-9]\d{9}\b/),
     linkedin: has("linkedin.com") || has("linkedin"),
     github: has("github.com") || has("github"),
-    metrics: hasRx(/\b\d+(?:\.\d+)?\s*(?:%|x\b|k\b|users\b|students\b|clients\b|requests\b|downloads\b|ms\b|seconds\b)\b/i),
+    metrics: hasRx(/\b\d+(?:\.\d+)?\s*(?:%|x\b|k\b|users\b|students\b|clients\b|requests\b|downloads\b|ms\b|seconds\b)/i),
     summary: ["summary", "objective", "profile"].some(has),
     experience: ["experience", "internship", "intern", "employment"].some(has),
     education: ["education", "b.tech", "bachelor", "university", "college", "cgpa"].some(has),
