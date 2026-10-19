@@ -198,6 +198,14 @@ function doAnalyze() {
   }, 1300);
 }
  
+function generateProReportForDemo() {
+  const text = document.getElementById("resumeInput").value.trim();
+  if (!text) { showToast("Paste and analyze your resume first.", "warn"); scrollToSection("analyzer"); return; }
+  const analysis = window._lastAnalysis || window.HireSenseAnalyzer.analyzeResume(text);
+  const report = window.HireSenseAnalyzer.generateProReport(text, analysis);
+  renderProReport(report, { demo: true });
+}
+
 function renderResults(data) {
   const circumference = 2 * Math.PI * 34; // r=34
  
