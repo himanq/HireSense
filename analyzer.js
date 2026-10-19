@@ -258,6 +258,10 @@ function generateProReport(input, analysis) {
   };
 }
 
+if (typeof window !== "undefined") {
+  window.HireSenseAnalyzer = { analyzeResume, generateProReport, rewriteBullet };
+}
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { analyzeResume, generateProReport, rewriteBullet };
 }
