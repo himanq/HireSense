@@ -310,7 +310,7 @@ function renderProReport(pro, meta) {
     card.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px">
         <div><div style="font-size:10px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Role ${i+1}</div><h3 style="font-size:1rem;font-weight:700;margin-top:2px">${escHtml(jd.role)}</h3></div>
-        <span class="jd-role-badge">JD Match ✦</span>
+        <span class="jd-role-badge">Tailoring checklist</span>
       </div>
       <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:12px">${escHtml(jd.summary)}</p>
       ${changes}`;
