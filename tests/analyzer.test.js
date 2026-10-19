@@ -90,6 +90,26 @@ test("expanded report uses placeholders instead of inventing work history", () =
   assert.match(report.linkedinSummary, /\[target role\/domain\]/i);
 });
 
+test("report output always contains the expected sections", () => {
+  const resume = "Skills\nPython\nProjects\nBuilt a small dashboard.";
+  const report = generateProReport(resume, analyzeResume(resume));
+  assert.equal(typeof report.rewrittenResume, "string");
+  assert.equal(typeof report.coverLetter, "string");
+  assert.equal(typeof report.linkedinSummary, "string");
+  assert.ok(report.rewrittenResume.length > 0);
+  assert.ok(report.coverLetter.length > 0);
+  assert.ok(report.linkedinSummary.length > 0);
+});
+
+test("non-string and unusual input values do not crash analysis", () => {
+  for (const value of [null, undefined, 0, 42, {}, ["Python", "Projects"]]) {
+    const result = analyzeResume(value);
+    assert.ok(result.atsScore >= 0 && result.atsScore <= 100);
+    assert.ok(Array.isArray(result.mistakes));
+    assert.ok(result.subScores && typeof result.subScores === "object");
+  }
+});
+
 test("long and HTML-like user text is treated as text by the analyzer", () => {
   const result = analyzeResume("<script>alert('x')</script> ".repeat(40));
   assert.ok(result.atsScore >= 0 && result.atsScore <= 100);
