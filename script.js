@@ -130,7 +130,7 @@ async function sendWeb3(subject, message) {
 /* ──────────────────────────────────────────────────────
    CONTACT FORM
 ────────────────────────────────────────────────────── */
-async async function sendContact() {
+async function sendContact() {
   const name = document.getElementById("cName").value.trim();
   const email = document.getElementById("cEmail").value.trim();
   const msg   = document.getElementById("cMsg").value.trim();
