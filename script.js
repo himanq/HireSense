@@ -191,6 +191,7 @@ function doAnalyze() {
     clearInterval(stepTimer);
     const data = window.HireSenseAnalyzer.analyzeResume(text);
     window._lastAnalysis = data;
+    window._lastAnalysisText = text;
     document.getElementById("loader").classList.remove("show");
     renderResults(data);
     document.getElementById("results-section").style.display = "block";
@@ -201,7 +202,10 @@ function doAnalyze() {
 function generateProReportForDemo() {
   const text = document.getElementById("resumeInput").value.trim();
   if (!text) { showToast("Paste and analyze your resume first.", "warn"); scrollToSection("analyzer"); return; }
-  const analysis = window._lastAnalysis || window.HireSenseAnalyzer.analyzeResume(text);
+  // Reuse cached analysis only when it belongs to the exact current resume text.
+  const analysis = window._lastAnalysis && window._lastAnalysisText === text
+    ? window._lastAnalysis
+    : window.HireSenseAnalyzer.analyzeResume(text);
   const report = window.HireSenseAnalyzer.generateProReport(text, analysis);
   renderProReport(report, { demo: true });
 }
