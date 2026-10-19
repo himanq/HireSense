@@ -45,6 +45,31 @@ test("technology detection matches complete terms instead of substrings", () => 
   assert.ok(node._meta.techs.includes("C++"));
 });
 
+test("repeating the same skill does not inflate the score", () => {
+  const once = analyzeResume("Skills\nPython");
+  const repeated = analyzeResume("Skills\nPython Python Python Python Python Python");
+  assert.equal(repeated.atsScore, once.atsScore);
+  assert.deepEqual(repeated._meta.techs, once._meta.techs);
+});
+
+test("analysis is deterministic and scores stay within documented bounds", () => {
+  const samples = [
+    "",
+    "Python JavaScript",
+    "EDUCATION\nB.Tech\nPROJECTS\nBuilt a small app.",
+    "SKILLS\nJava, C++, Node.js, Docker, AWS, Git"
+  ];
+  for (const sample of samples) {
+    const first = analyzeResume(sample);
+    const second = analyzeResume(sample);
+    assert.deepEqual(second, first);
+    assert.ok(first.atsScore >= 10 && first.atsScore <= 95);
+    for (const value of Object.values(first.subScores)) {
+      assert.ok(value >= 0 && value <= 100);
+    }
+  }
+});
+
 test("bullet suggestions do not fabricate achievements or metrics", () => {
   const resume = "Projects\nWorked on a Python dashboard and fixed input validation issues.";
   const result = analyzeResume(resume);
