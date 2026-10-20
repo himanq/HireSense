@@ -369,5 +369,5 @@ if (typeof window !== "undefined") {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob };
+  module.exports = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob, buildDownloadReport };
 }
