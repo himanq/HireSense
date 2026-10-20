@@ -312,8 +312,60 @@ function generateProReport(input, analysis) {
   };
 }
 
+
+function buildDownloadReport(resumeText, analysis, jobComparison, proReport) {
+  const lines = [
+    "# HireSense Resume Review",
+    "",
+    "> Rule-based guidance for personal review. Not an official ATS score or a hiring prediction.",
+    "",
+    "## Resume signals",
+    "",
+    "- Resume signal score: " + (analysis && Number.isFinite(analysis.atsScore) ? analysis.atsScore + "/100" : "Not available"),
+    "- Original resume characters: " + String(resumeText || "").length,
+    "",
+    "## Review notes",
+    ""
+  ];
+  const mistakes = analysis && Array.isArray(analysis.mistakes) ? analysis.mistakes : [];
+  if (mistakes.length) mistakes.forEach(item => lines.push("- " + String(item)));
+  else lines.push("- No review notes were returned.");
+  if (jobComparison) {
+    lines.push("", "## Job description term comparison", "",
+      "- Dictionary term overlap: " + jobComparison.coverage + "%",
+      "- Supported terms detected: " + (jobComparison.matched.length ? jobComparison.matched.join(", ") : "None"),
+      "- Terms not detected: " + (jobComparison.missing.length ? jobComparison.missing.join(", ") : "None"),
+      "",
+      "> " + jobComparison.message,
+      "> Missing terms are prompts to review, not skills to claim."
+    );
+  }
+  if (proReport) {
+    lines.push("", "## Resume draft", "", String(proReport.rewrittenResume || ""),
+      "", "## Cover letter draft", "", String(proReport.coverLetter || ""),
+      "", "## LinkedIn headline", "", String(proReport.linkedinHeadline || ""),
+      "", "## LinkedIn summary", "", String(proReport.linkedinSummary || "")
+    );
+    if (Array.isArray(proReport.jdVersions)) {
+      lines.push("", "## Role tailoring checklists", "");
+      proReport.jdVersions.forEach(role => {
+        lines.push("### " + String(role.role || "Role"), "", String(role.summary || ""));
+        (role.keyChanges || []).forEach(change => lines.push("- " + String(change)));
+        lines.push("");
+      });
+    }
+  }
+  lines.push("", "## Privacy and limitations", "",
+    "- This report is generated locally in your browser.",
+    "- Review every suggestion and replace placeholders with accurate details.",
+    "- Only list skills and outcomes you can demonstrate.",
+    "- Keyword overlap does not establish qualification or predict hiring outcomes.",
+    "");
+  return lines.join("\n");
+}
+
 if (typeof window !== "undefined") {
-  window.HireSenseAnalyzer = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob };
+  window.HireSenseAnalyzer = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob, buildDownloadReport };
 }
 
 if (typeof module !== "undefined" && module.exports) {
