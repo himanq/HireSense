@@ -692,3 +692,67 @@ button:focus-visible,a:focus-visible{outline:2px solid #8bffb0;outline-offset:3p
  .ta-footer{align-items:stretch;flex-direction:column}
  .ta-footer .btn{width:100%}
 }
+
+
+/* ── Product-first hero and premium interaction polish ── */
+#hero{min-height:auto;padding:138px 24px 74px;background:radial-gradient(ellipse at 50% 0%,rgba(139,255,176,.085),transparent 48%),#080b12}
+.hero-inner{max-width:1040px}
+.hero-title{font-size:clamp(2.65rem,6.2vw,5.1rem);line-height:1.01;letter-spacing:-.065em;margin-bottom:24px}
+.hero-title .shimmer{background:linear-gradient(100deg,#f4f5f7 4%,#8bffb0 42%,#b5f5ff 72%,#f4f5f7 96%);background-size:220% auto}
+.hero-sub{max-width:650px;font-size:clamp(1rem,1.6vw,1.15rem);color:#a4aab7;line-height:1.8;margin-bottom:28px}
+.hero-badge{background:rgba(139,255,176,.06);border-color:rgba(139,255,176,.18);color:#b6f8c8;font-size:11px;letter-spacing:.06em}
+.badge-dot{background:#8bffb0;box-shadow:0 0 12px rgba(139,255,176,.75)}
+.hero-btns .btn{min-height:50px;box-shadow:none}
+.btn-blue{background:#8bffb0;color:#0b140e;font-weight:800;border:1px solid rgba(139,255,176,.6)}
+.btn-blue:hover{background:#a6ffc2;box-shadow:0 10px 34px rgba(139,255,176,.13)}
+.btn-ghost{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.13)}
+.hero-preview{max-width:760px;margin:54px auto 0;text-align:left;border:1px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(20,26,31,.98),rgba(11,15,21,.98));box-shadow:0 30px 100px rgba(0,0,0,.42),0 0 0 6px rgba(255,255,255,.012);animation:fadeUp .8s .45s ease both}
+.preview-top,.preview-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;color:#737d8b;font-size:10px;letter-spacing:.12em;font-weight:700}
+.preview-top{border-bottom:1px solid rgba(255,255,255,.07)}
+.window-dots{display:flex;gap:5px}.window-dots i{display:block;width:7px;height:7px;border-radius:50%;background:#48505b}.window-dots i:first-child{background:#ff827b}.window-dots i:nth-child(2){background:#f5c76b}.window-dots i:nth-child(3){background:#8bffb0}
+.preview-status{border:1px solid rgba(139,255,176,.22);border-radius:99px;padding:4px 8px;color:#8bffb0;font-size:9px;letter-spacing:.08em}
+.preview-body{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;padding:26px}
+.preview-score{padding:19px;border-radius:15px;background:linear-gradient(145deg,rgba(139,255,176,.07),rgba(255,255,255,.018));border:1px solid rgba(139,255,176,.14)}
+.preview-kicker{font-size:10px;letter-spacing:.13em;color:#8f9a9f;font-weight:800}
+.preview-number{font-family:'Syne',sans-serif;font-size:3.5rem;line-height:1.2;letter-spacing:-.07em;font-weight:800;margin:9px 0}
+.preview-number span{font-size:1rem;color:#7e8990;letter-spacing:0}
+.preview-track{height:5px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin:8px 0 12px}.preview-track i{display:block;width:72%;height:100%;border-radius:99px;background:linear-gradient(90deg,#8bffb0,#a6f5d0)}
+.preview-score small{font-size:10px;color:#737d8b;line-height:1.5}
+.preview-insights{display:flex;flex-direction:column;gap:9px}
+.preview-insight{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.018);min-width:0}
+.insight-icon{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;font-size:17px}
+.insight-green{color:#8bffb0;background:rgba(139,255,176,.09)}.insight-amber{color:#f2c879;background:rgba(242,200,121,.09)}.insight-violet{color:#c4b5fd;background:rgba(196,181,253,.09)}
+.preview-insight div{display:flex;flex-direction:column;gap:2px;min-width:0}.preview-insight b{font-size:12px;color:#e9edf0;font-weight:700}.preview-insight small{font-size:11px;color:#87919b;white-space:normal}
+.insight-tag{margin-left:auto;font-size:8px;letter-spacing:.08em;color:#8b949d;border:1px solid rgba(255,255,255,.09);padding:4px 6px;border-radius:5px;flex-shrink:0}
+.preview-foot{border-top:1px solid rgba(255,255,255,.07);letter-spacing:0;text-transform:none;font-size:11px;font-weight:500;color:#89939d}
+.preview-live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8bffb0;margin-right:7px;box-shadow:0 0 8px rgba(139,255,176,.5)}
+.hero-stats{margin-top:42px;gap:0}.stat{padding:0 22px}.stat-num{font-size:1.35rem;color:#f4f5f7}.stat-lbl{color:#838b97;font-size:11px}
+section{padding:96px 24px}
+.sec-title{letter-spacing:-.055em}.s-tag{background:rgba(139,255,176,.055);border-color:rgba(139,255,176,.16);color:#a7efbd}
+.card,.price-card,.r-card,.pro-card,.jd-card{background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.014));border-color:rgba(255,255,255,.09);box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.card{padding:26px;border-radius:18px}.card:hover{border-color:rgba(139,255,176,.25);box-shadow:0 16px 40px rgba(0,0,0,.18)}
+.card p{color:#a4aab7}.sec-sub{color:#929ba8;line-height:1.7}
+.textarea-wrap{background:linear-gradient(130deg,rgba(139,255,176,.5),rgba(255,255,255,.08),rgba(166,245,208,.22));box-shadow:0 22px 65px rgba(0,0,0,.2)}
+.textarea-inner{background:#0b0f15}.resume-ta{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.1);min-height:280px}
+.resume-ta:focus{border-color:rgba(139,255,176,.5);box-shadow:0 0 0 3px rgba(139,255,176,.07)}
+#analyzer .sec-inner{max-width:820px}
+#analyzer .sec-sub{margin-bottom:28px}
+footer{background:#080b12}
+button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid #8bffb0;outline-offset:3px}
+@media(max-width:768px){
+ #hero{padding:112px 18px 54px;min-height:auto}
+ .hero-title{font-size:clamp(2.45rem,12vw,4rem)}
+ .hero-preview{margin-top:36px;border-radius:16px}
+ .preview-body{grid-template-columns:1fr;gap:12px;padding:14px}
+ .preview-score{padding:15px}.preview-number{font-size:2.8rem}
+ .preview-top,.preview-foot{padding:12px 14px;font-size:9px}
+ .preview-insight{padding:10px}.preview-insight small{font-size:10px}
+ .insight-tag{display:none}
+ .hero-stats{margin-top:30px;row-gap:18px}
+ .stat{padding:0 12px;min-width:40%}
+ section{padding:70px 18px}
+ .textarea-inner{padding:12px}
+ .resume-ta{min-height:230px;padding:14px;font-size:14px}
+ .ta-footer{align-items:stretch;flex-direction:column}
+ .ta-footer .btn{width:100%}
+}
