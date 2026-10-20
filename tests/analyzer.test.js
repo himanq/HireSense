@@ -137,3 +137,31 @@ test("job-description comparison handles empty inputs and unsupported descriptio
   assert.equal(result.totalTerms, 0);
   assert.match(result.message, /review it manually/i);
 });
+
+
+test("download report includes limitations and optional job comparison", () => {
+  const { buildDownloadReport } = require("../analyzer.js");
+  const report = buildDownloadReport("React developer resume", {
+    atsScore: 72, mistakes: ["Add measurable project outcomes."]
+  }, {
+    coverage: 50, matched: ["React"], missing: ["TypeScript"],
+    message: "Dictionary-based term overlap only."
+  }, null);
+  assert.match(report, /Resume signal score: 72\/100/);
+  assert.match(report, /React/);
+  assert.match(report, /TypeScript/);
+  assert.match(report, /not skills to claim/i);
+  assert.match(report, /Not an official ATS score/i);
+});
+
+test("download report includes draft sections when a report is supplied", () => {
+  const { buildDownloadReport } = require("../analyzer.js");
+  const report = buildDownloadReport("Resume", { atsScore: 50, mistakes: [] }, null, {
+    rewrittenResume: "Resume draft text", coverLetter: "Cover letter text",
+    linkedinHeadline: "Headline", linkedinSummary: "Summary",
+    jdVersions: [{ role: "Frontend Developer", summary: "Focus on UI work.", keyChanges: ["Explain React project."] }]
+  });
+  assert.match(report, /Resume draft text/);
+  assert.match(report, /Cover letter text/);
+  assert.match(report, /Frontend Developer/);
+});
