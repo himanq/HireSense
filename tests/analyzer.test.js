@@ -115,3 +115,25 @@ test("long and HTML-like user text is treated as text by the analyzer", () => {
   assert.ok(result.atsScore >= 0 && result.atsScore <= 100);
   assert.ok(Array.isArray(result.mistakes));
 });
+
+test("job-description comparison identifies overlap and gaps without claiming ATS compatibility", () => {
+  const { compareResumeToJob } = require("../analyzer.js");
+  const resume = "Skills\nJavaScript, React, Git\nProjects\nBuilt a responsive frontend.";
+  const jd = "Frontend internship requiring JavaScript, React, TypeScript, Git, and teamwork.";
+  const result = compareResumeToJob(resume, jd);
+  assert.ok(result.matched.includes("JavaScript"));
+  assert.ok(result.matched.includes("React"));
+  assert.ok(result.missing.includes("TypeScript"));
+  assert.ok(result.missing.includes("Teamwork"));
+  assert.equal(result.totalTerms, 5);
+  assert.equal(result.coverage, 60);
+  assert.match(result.message, /not a skill to claim/i);
+});
+
+test("job-description comparison handles empty inputs and unsupported descriptions", () => {
+  const { compareResumeToJob } = require("../analyzer.js");
+  assert.equal(compareResumeToJob("", "React developer").coverage, 0);
+  const result = compareResumeToJob("Python projects", "Looking for a motivated and curious person.");
+  assert.equal(result.totalTerms, 0);
+  assert.match(result.message, /review it manually/i);
+});
