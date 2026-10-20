@@ -166,6 +166,56 @@ function analyzeResume(input) {
   };
 }
 
+
+const JD_TERMS = [
+  ...Object.keys(TECH_MAP),
+  "frontend", "front end", "backend", "back end", "full stack", "rest api",
+  "unit testing", "integration testing", "problem solving", "data structures",
+  "algorithms", "object oriented programming", "oop", "communication",
+  "teamwork", "agile", "debugging", "accessibility", "responsive design",
+  "sql", "nosql", "api", "internship", "computer science", "machine learning",
+  "data analysis", "data analytics", "excel", "power bi", "tableau"
+];
+
+function containsTerm(text, term) {
+  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\function generateProReport(input, analysis) {");
+  const flexible = escaped.replace(/\\\s+/g, "\\\\s+");
+  return new RegExp("(^|[^a-z0-9+#.])" + flexible + "($|[^a-z0-9+#.])", "i").test(text);
+}
+
+/**
+ * Compare resume text with a supplied job description using a transparent
+ * dictionary of technical and role terms. This is not an ATS simulation.
+ */
+function compareResumeToJob(resumeInput, jobDescriptionInput) {
+  const resume = String(resumeInput || "").trim();
+  const jobDescription = String(jobDescriptionInput || "").trim();
+  const empty = { coverage: 0, matched: [], missing: [], detected: [], totalTerms: 0,
+    message: "Paste a resume and a job description to compare relevant terms." };
+  if (!resume || !jobDescription) return empty;
+
+  const terms = [];
+  for (const term of JD_TERMS) {
+    if (containsTerm(jobDescription, term) && !terms.some(existing => existing.toLowerCase() === term.toLowerCase())) {
+      terms.push(term);
+    }
+  }
+  const detected = terms.filter(term => containsTerm(resume, term));
+  const missing = terms.filter(term => !containsTerm(resume, term));
+  const matched = detected.map(term => TECH_MAP[term] || term.replace(/\b\w/g, char => char.toUpperCase()));
+  const missingLabels = missing.map(term => TECH_MAP[term] || term.replace(/\b\w/g, char => char.toUpperCase()));
+  return {
+    coverage: terms.length ? Math.round((detected.length / terms.length) * 100) : 0,
+    matched,
+    missing: missingLabels,
+    detected: terms,
+    totalTerms: terms.length,
+    message: terms.length
+      ? "Dictionary-based term overlap only. A missing term is a prompt to review—not a skill to claim."
+      : "No supported role or technology terms were detected in this job description. Review it manually."
+  };
+}
+
 function generateProReport(input, analysis) {
   const text = String(input || "").trim();
   const data = analysis || analyzeResume(text);
@@ -263,9 +313,9 @@ function generateProReport(input, analysis) {
 }
 
 if (typeof window !== "undefined") {
-  window.HireSenseAnalyzer = { analyzeResume, generateProReport, rewriteBullet };
+  window.HireSenseAnalyzer = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob };
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { analyzeResume, generateProReport, rewriteBullet };
+  module.exports = { analyzeResume, generateProReport, rewriteBullet, compareResumeToJob };
 }
