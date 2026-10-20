@@ -658,3 +658,37 @@ button:focus-visible,a:focus-visible{outline:2px solid #8bffb0;outline-offset:3p
  .card{padding:22px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* ── Resume workspace + results polish ── */
+#analyzer .sec-inner{max-width:900px}
+#analyzer .sec-title{margin-bottom:12px}
+#analyzer .sec-sub{font-size:14px}
+.textarea-wrap{background:linear-gradient(135deg,rgba(139,255,176,.34),rgba(167,139,250,.18));border-radius:22px;padding:1px;box-shadow:0 28px 90px rgba(0,0,0,.24)}
+.textarea-inner{background:#101620;border-radius:21px;padding:22px}
+.resume-ta{min-height:300px;background:#0a0e15!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:15px!important;color:#f4f5f7!important;padding:20px;font-size:15px;line-height:1.8}
+.resume-ta::placeholder{color:#6f7888}
+.resume-ta:focus{border-color:rgba(139,255,176,.7)!important}
+.ta-footer{padding-top:5px}
+.wc-text{color:#929baa;font-size:12px}
+#results-section{padding:90px 24px;background:#080b12}
+#results-section .sec-inner{max-width:1080px}
+#results-section .r-card{background:#101620;border-color:rgba(255,255,255,.09);border-radius:20px;box-shadow:0 20px 65px rgba(0,0,0,.14)}
+#results-section .ats-card{background:linear-gradient(150deg,rgba(139,255,176,.09),rgba(167,139,250,.045))}
+#results-section .ats-label,#results-section .sub-lbl{color:#a4aab7}
+#results-section .r-card:hover{border-color:rgba(139,255,176,.24)}
+#results-section .card-header h3,#results-section .r-card h3{color:#f4f5f7}
+#results-section .bar-bg{background:rgba(255,255,255,.09)}
+#results-section .bar-fill{background:#8bffb0}
+#results-section .score-badge{background:rgba(139,255,176,.12);color:#8bffb0}
+#loader{background:#080b12}
+.loader-title{color:#f4f5f7}.loader-step{color:#8bffb0}
+@media(max-width:700px){
+ #results-section{padding:68px 16px}
+ .rg-2col,.rg-2col2{grid-template-columns:1fr!important}
+ .tips-grid{grid-template-columns:1fr}
+ .textarea-inner{padding:12px}
+ .resume-ta{min-height:250px;padding:14px}
+ .ta-footer{align-items:stretch;flex-direction:column}
+ .ta-footer .btn{width:100%}
+}
