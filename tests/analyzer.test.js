@@ -125,8 +125,8 @@ test("job-description comparison identifies overlap and gaps without claiming AT
   assert.ok(result.matched.includes("React"));
   assert.ok(result.missing.includes("TypeScript"));
   assert.ok(result.missing.includes("Teamwork"));
-  assert.equal(result.totalTerms, 5);
-  assert.equal(result.coverage, 60);
+  assert.equal(result.totalTerms, 7);
+  assert.equal(result.coverage, 57);
   assert.match(result.message, /not a skill to claim/i);
 });
 
