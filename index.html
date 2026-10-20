@@ -139,6 +139,26 @@ Include education, skills, work experience, and projects for the most accurate a
   </div>
 </section>
  
+<!-- JOB DESCRIPTION COMPARISON -->
+<section id="job-match">
+  <div class="sec-inner narrow">
+    <div class="s-tag">✦ Role-specific check</div>
+    <h2 class="sec-title">Compare against a real job</h2>
+    <p class="sec-sub">Paste your resume above and the job description here to see supported terms that overlap or may need review. This is a transparent dictionary check—not an ATS score or a hiring prediction.</p>
+    <div class="textarea-wrap">
+      <div class="textarea-inner">
+        <label for="jobDescriptionInput" class="job-match-label">JOB DESCRIPTION</label>
+        <textarea id="jobDescriptionInput" class="resume-ta" placeholder="Paste the internship or job description here..."></textarea>
+        <div class="ta-footer">
+          <span class="wc-text">Missing terms are prompts to review, not skills to claim.</span>
+          <button class="btn btn-blue" id="compareJobBtn" style="padding:11px 26px;border-radius:11px;font-size:15px" onclick="compareJobDescription()">Compare terms →</button>
+        </div>
+      </div>
+    </div>
+    <div id="jobMatchResults" class="job-match-results" aria-live="polite" hidden></div>
+  </div>
+</section>
+
 <!-- ══════════════════════════════════════
      LOADER
 ══════════════════════════════════════ -->
