@@ -205,6 +205,73 @@ function doAnalyze() {
   }, 1300);
 }
  
+
+function compareJobDescription() {
+  const resume = document.getElementById("resumeInput").value.trim();
+  const jobDescription = document.getElementById("jobDescriptionInput").value.trim();
+  const results = document.getElementById("jobMatchResults");
+  if (!resume || !jobDescription) {
+    showToast("Paste both your resume and the job description first.", "warn");
+    if (!resume) scrollToSection("analyzer");
+    else document.getElementById("jobDescriptionInput").focus();
+    return;
+  }
+
+  try {
+    const result = window.HireSenseAnalyzer.compareResumeToJob(resume, jobDescription);
+    results.replaceChildren();
+    results.hidden = false;
+
+    const heading = document.createElement("div");
+    heading.className = "job-match-heading";
+    const title = document.createElement("h3");
+    title.textContent = "Keyword overlap";
+    const coverage = document.createElement("div");
+    coverage.className = "job-match-coverage";
+    coverage.textContent = result.coverage + "%";
+    heading.append(title, coverage);
+    results.appendChild(heading);
+
+    const note = document.createElement("p");
+    note.className = "job-match-note";
+    note.textContent = result.message;
+    results.appendChild(note);
+
+    const columns = document.createElement("div");
+    columns.className = "job-match-columns";
+    const groups = [
+      { title: "Found in resume", items: result.matched, className: "matched" },
+      { title: "Not detected", items: result.missing, className: "missing" }
+    ];
+    groups.forEach(group => {
+      const panel = document.createElement("div");
+      panel.className = "job-match-panel " + group.className;
+      const label = document.createElement("h4");
+      label.textContent = group.title + " (" + group.items.length + ")";
+      panel.appendChild(label);
+      if (!group.items.length) {
+        const empty = document.createElement("p");
+        empty.textContent = "No terms in this group.";
+        panel.appendChild(empty);
+      } else {
+        const list = document.createElement("ul");
+        group.items.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          list.appendChild(li);
+        });
+        panel.appendChild(list);
+      }
+      columns.appendChild(panel);
+    });
+    results.appendChild(columns);
+    results.scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (error) {
+    console.error("HireSense job comparison failed:", error);
+    showToast("Could not compare these texts. Please refresh and try again.", "warn");
+  }
+}
+
 function generateProReportForDemo() {
   const text = document.getElementById("resumeInput").value.trim();
   if (!text) { showToast("Paste and analyze your resume first.", "warn"); scrollToSection("analyzer"); return; }
