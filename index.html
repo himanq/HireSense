@@ -19,7 +19,7 @@
   <div class="nav-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon">H</div>
-      <span class="logo-text">HireSense<span>AI</span></span>
+      <span class="logo-text">HireSense<span>®</span></span>
     </button>
     <div class="nav-links" id="navLinks">
       <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
@@ -42,8 +42,7 @@
     <div class="hero-badge-wrap">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        PRIVATE BY DEFAULT &nbsp;·&nbsp; EXPLAINABLE REVIEW &nbsp;·&nbsp; 
-        <strong style="color:#a78bfa;margin-left:4px"></strong>
+        PRIVATE BY DEFAULT &nbsp;·&nbsp; BUILT FOR REAL PROGRESS
       </div>
     </div>
  
@@ -59,7 +58,16 @@
  
     <div class="hero-btns">
       <button class="btn btn-blue" style="padding:14px 30px;border-radius:12px;font-size:16px" onclick="scrollToSection('analyzer')">⚡ Analyze My Resume Free</button>
-      <button class="btn btn-ghost" style="padding:14px 26px;border-radius:12px;font-size:16px" onclick="openModal('sampleModal')">View Sample Report →</button>
+      <button class="btn btn-ghost" style="padding:14px 26px;border-radius:12px;font-size:16px" onclick="openModal('sampleModal')">Explore the report ↗</button>
+    </div>
+
+    <div class="hero-preview" aria-label="Illustrative sample report preview">
+      <div class="preview-top"><div class="window-dots"><i></i><i></i><i></i></div><span>HIRESENSE / SAMPLE REPORT</span><span class="preview-status">ILLUSTRATIVE</span></div>
+      <div class="preview-body">
+        <div class="preview-score"><span class="preview-kicker">RESUME SIGNALS</span><div class="preview-number">72<span>/100</span></div><div class="preview-track"><i></i></div><small>Example score · not an ATS prediction</small></div>
+        <div class="preview-insights"><div class="preview-insight"><span class="insight-icon insight-green">↗</span><div><b>Strong signal</b><small>Project details are visible</small></div><span class="insight-tag">FOUND</span></div><div class="preview-insight"><span class="insight-icon insight-amber">＋</span><div><b>Opportunity</b><small>Show verified outcomes</small></div><span class="insight-tag">REVIEW</span></div><div class="preview-insight"><span class="insight-icon insight-violet">⌁</span><div><b>Next step</b><small>Make skills easier to scan</small></div><span class="insight-tag">ACTION</span></div></div>
+      </div>
+      <div class="preview-foot"><span><i class="preview-live"></i> Runs in your browser</span><span>No upload required ↗</span></div>
     </div>
  
     <div class="hero-stats">
@@ -209,7 +217,7 @@ Include education, skills, work experience, and projects for the most accurate a
         <div class="card-header">
           <div class="card-icon" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.2)">✨</div>
           <h3>Improved Bullets</h3>
-          <span class="badge-green">AI Rewritten</span>
+          <span class="badge-green">Rule-based draft</span>
         </div>
         <div id="bulletsList"></div>
       </div>
@@ -220,7 +228,7 @@ Include education, skills, work experience, and projects for the most accurate a
         </div>
         <div id="skillsList"></div>
         <div class="tip-box" style="margin-top:14px">
-          <p>💡 Adding 3–4 of these could boost your match rate by <strong>~40%</strong></p>
+          <p>💡 Treat missing skills as prompts to learn—not claims to add without evidence.</p>
         </div>
       </div>
     </div>
@@ -237,11 +245,11 @@ Include education, skills, work experience, and projects for the most accurate a
     <!-- Upgrade CTA -->
     <div class="upgrade-cta">
       <div>
-        <div class="pro-badge">🚀 UPGRADE TO PRO</div>
-        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:5px">Get your full resume rewritten instantly</h3>
-        <p style="font-size:13px;color:#64748b">Pay ₹100 → Enter UTR + Email → Pro Report on screen in seconds</p>
+        <div class="pro-badge">✦ EDITABLE CAREER DRAFTS</div>
+        <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:5px">Turn review notes into a useful first draft</h3>
+        <p style="font-size:13px;color:#64748b">Templates are generated locally. Review every placeholder and keep only facts you can verify.</p>
       </div>
-      <button class="btn btn-blue" style="padding:13px 28px;border-radius:12px;font-size:15px;white-space:nowrap" onclick="generateProReportForDemo()">Generate Editable Report →</button>
+      <button class="btn btn-blue" style="padding:13px 28px;border-radius:12px;font-size:15px;white-space:nowrap" onclick="generateProReportForDemo()">Build My Drafts →</button>
     </div>
   </div>
 </section>
@@ -323,9 +331,9 @@ Include education, skills, work experience, and projects for the most accurate a
   <div class="footer-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:8px">H</div>
-      <span style="font-family:'Syne',sans-serif;font-weight:700;color:#334155;font-size:14px">HireSenseAI</span>
+      <span style="font-family:'Syne',sans-serif;font-weight:700;color:#a4aab7;font-size:14px">HireSense</span>
     </button>
-    <p style="color:#1e293b;font-size:13px">Built for students · Smart AI · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
+    <p style="color:#1e293b;font-size:13px">Built for students · Local-first by design · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
     <div style="display:flex;gap:18px">
       <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
       <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
