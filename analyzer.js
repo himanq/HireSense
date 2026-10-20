@@ -178,8 +178,9 @@ const JD_TERMS = [
 ];
 
 function containsTerm(text, term) {
-  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\function generateProReport(input, analysis) {");
-  const flexible = escaped.replace(/\\\s+/g, "\\\\s+");
+  // Terms are matched literally with flexible whitespace and token boundaries.
+  const escaped = term.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&");
+  const flexible = escaped.replace(/\\s+/g, "\\\\s+");
   return new RegExp("(^|[^a-z0-9+#.])" + flexible + "($|[^a-z0-9+#.])", "i").test(text);
 }
 
