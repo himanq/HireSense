@@ -194,6 +194,12 @@ function doAnalyze() {
       window._lastAnalysis = data;
       window._lastAnalysisText = text;
       renderResults(data);
+      ["downloadMarkdownBtn", "downloadTextBtn"].forEach(id => {
+        const button = document.getElementById(id);
+        if (button) button.disabled = false;
+      });
+      const downloadHint = document.getElementById("downloadHint");
+      if (downloadHint) downloadHint.textContent = "Your report is ready. Choose a format to save it to your device.";
       document.getElementById("results-section").style.display = "block";
       setTimeout(() => document.getElementById("results-section").scrollIntoView({ behavior: "smooth" }), 80);
     } catch (error) {
