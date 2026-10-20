@@ -10,7 +10,8 @@ HireSense checks resume text for common completeness signals, suggests fact-pres
 
 ## Features
 
-- Heuristic review score with keyword, section-coverage, and content-signal breakdowns.
+- Resume signal score with keyword, section-coverage, and content-signal breakdowns (not an ATS score).
+- Job-description term comparison showing detected overlap and missing supported terms; this is dictionary matching, not an ATS simulation.
 - Checks for contact details, common sections, skills, and measurable outcomes.
 - Bullet suggestions that preserve the original claim and ask for verified outcomes instead of inventing metrics.
 - An expanded resume structure, cover-letter template, and role-tailoring checklists with explicit placeholders.
@@ -66,7 +67,6 @@ The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub A
 
 ## Roadmap
 
-- Add role-description keyword comparison with clear matching/missing term explanations.
 - Add downloadable plain-text/Markdown reports.
 - Improve automated accessibility and cross-browser checks.
 
