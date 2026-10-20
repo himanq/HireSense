@@ -179,7 +179,7 @@ const JD_TERMS = [
 
 function containsTerm(text, term) {
   const normalize = value => " " + String(value).toLowerCase()
-    .replace(/[^a-z0-9+#]+/g, " ").trim().replace(/\\s+/g, " ") + " ";
+    .replace(/[^a-z0-9+#]+/g, " ").trim().replace(/\s+/g, " ") + " ";
   return normalize(text).includes(normalize(term));
 }
 
