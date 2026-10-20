@@ -206,6 +206,40 @@ function doAnalyze() {
 }
  
 
+
+function downloadHireSenseReport(format) {
+  const resumeText = document.getElementById("resumeInput").value.trim();
+  if (!resumeText || !window._lastAnalysis) {
+    showToast("Analyse your resume before downloading a report.", "warn");
+    scrollToSection("analyzer");
+    return;
+  }
+  try {
+    let jobComparison = null;
+    const jobText = document.getElementById("jobDescriptionInput").value.trim();
+    if (jobText) jobComparison = window.HireSenseAnalyzer.compareResumeToJob(resumeText, jobText);
+    const markdown = window.HireSenseAnalyzer.buildDownloadReport(
+      resumeText, window._lastAnalysis, jobComparison, window._lastProReport || null
+    );
+    const content = format === "txt"
+      ? markdown.replace(/^#{1,3} /gm, "").replace(/^> /gm, "")
+      : markdown;
+    const blob = new Blob([content], { type: format === "txt" ? "text/plain;charset=utf-8" : "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "hiresense-resume-review." + format;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showToast("Your report download has started.", "info");
+  } catch (error) {
+    console.error("HireSense report export failed:", error);
+    showToast("Could not prepare the report. Please try again.", "warn");
+  }
+}
+
 function compareJobDescription() {
   const resume = document.getElementById("resumeInput").value.trim();
   const jobDescription = document.getElementById("jobDescriptionInput").value.trim();
@@ -282,6 +316,7 @@ function generateProReportForDemo() {
       ? window._lastAnalysis
       : window.HireSenseAnalyzer.analyzeResume(text);
     const report = window.HireSenseAnalyzer.generateProReport(text, analysis);
+    window._lastProReport = report;
     renderProReport(report, { demo: true });
   } catch (error) {
     console.error("HireSense report generation failed:", error);
