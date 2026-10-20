@@ -898,3 +898,12 @@ footer{border-top-color:rgba(255,255,255,.07)}
   .job-match-results { padding:16px; }
   .job-match-columns { grid-template-columns:1fr; }
 }
+
+
+/* Downloadable review reports */
+.report-download-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; padding:18px 20px 26px; }
+.report-download-actions .btn { cursor:pointer; }
+@media (max-width:560px) {
+  .report-download-actions { padding:14px 16px 22px; }
+  .report-download-actions .btn { width:100%; justify-content:center; }
+}
