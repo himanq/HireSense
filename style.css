@@ -907,3 +907,16 @@ footer{border-top-color:rgba(255,255,255,.07)}
   .report-download-actions { padding:14px 16px 22px; }
   .report-download-actions .btn { width:100%; justify-content:center; }
 }
+
+
+/* Report downloads are visible beside the resume analyzer, before and after analysis. */
+.analyzer-download-actions { flex-direction:column; align-items:center; padding:18px 0 0; }
+.download-hint { color:#94a3b8; font-size:13px; line-height:1.5; text-align:center; }
+.download-button-row { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; width:100%; }
+.download-button-row .btn { min-height:44px; padding:11px 18px; border-radius:11px; }
+.download-button-row .btn:disabled { opacity:.55; cursor:not-allowed; transform:none; box-shadow:none; }
+@media (max-width:560px) {
+  .analyzer-download-actions { padding-top:14px; }
+  .download-button-row { flex-direction:column; }
+  .download-button-row .btn { width:100%; }
+}
