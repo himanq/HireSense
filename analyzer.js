@@ -178,10 +178,9 @@ const JD_TERMS = [
 ];
 
 function containsTerm(text, term) {
-  // Terms are matched literally with flexible whitespace and token boundaries.
-  const escaped = term.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&");
-  const flexible = escaped.replace(/\\s+/g, "\\\\s+");
-  return new RegExp("(^|[^a-z0-9+#.])" + flexible + "($|[^a-z0-9+#.])", "i").test(text);
+  const normalize = value => " " + String(value).toLowerCase()
+    .replace(/[^a-z0-9+#]+/g, " ").trim().replace(/\\s+/g, " ") + " ";
+  return normalize(text).includes(normalize(term));
 }
 
 /**
