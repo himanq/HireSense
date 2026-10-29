@@ -34,6 +34,23 @@ h1, h2, h3, h4 { font-family: 'Inter', sans-serif; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
 ::selection { background: rgba(197,243,107,.28); color: #fff; }
+
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 68% 56% at 18% 26%, rgba(197,243,107,.10) 0%, transparent 72%),
+    radial-gradient(ellipse 48% 52% at 82% 58%, rgba(185,163,255,.10) 0%, transparent 72%);
+}
+.feat-icon-blue { background: rgba(197,243,107,.10); border-color: rgba(197,243,107,.24); }
+.feat-icon-cyan { background: rgba(197,243,107,.08); border-color: rgba(197,243,107,.20); }
+.feat-icon-violet { background: rgba(185,163,255,.12); border-color: rgba(185,163,255,.28); }
+.feat-icon-green { background: rgba(197,243,107,.10); border-color: rgba(197,243,107,.22); }
+.feat-icon-amber { background: rgba(245,189,79,.10); border-color: rgba(245,189,79,.24); }
+.feat-icon-pink { background: rgba(185,163,255,.10); border-color: rgba(185,163,255,.24); }
+
  
 /* ── ANIMATIONS ─────────────────────────────────────────── */
 @keyframes spin      { from { transform: rotate(0deg);   } to { transform: rotate(360deg); } }
