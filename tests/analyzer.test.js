@@ -165,3 +165,26 @@ test("download report includes draft sections when a report is supplied", () => 
   assert.match(report, /Cover letter text/);
   assert.match(report, /Frontend Developer/);
 });
+
+
+test("download controls are present, responsive, and wired to report generation", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const html = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
+  const css = fs.readFileSync(path.join(__dirname, "..", "style.css"), "utf8");
+  const script = fs.readFileSync(path.join(__dirname, "..", "script.js"), "utf8");
+
+  assert.match(html, /class="report-download-actions analyzer-download-actions"/);
+  assert.match(html, /id="downloadMarkdownBtn"[^>]*onclick="downloadHireSenseReport\('md'\)"/);
+  assert.match(html, /id="downloadTextBtn"[^>]*onclick="downloadHireSenseReport\('txt'\)"/);
+  assert.match(html, /id="downloadHint"/);
+
+  assert.match(css, /\.report-download-actions\s*\{[^}]*display\s*:\s*flex/s);
+  assert.match(css, /\.download-button-row\s*\{[^}]*display\s*:\s*flex/s);
+  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*?\.download-button-row\s*\{\s*flex-direction:\s*column/s);
+  assert.match(css, /\.download-button-row\s*\.btn\s*\{\s*width:\s*100%/s);
+
+  assert.match(script, /function downloadHireSenseReport\(format\)/);
+  assert.match(script, /\["downloadMarkdownBtn",\s*"downloadTextBtn"\][\s\S]*?button\.disabled\s*=\s*false/s);
+  assert.match(script, /downloadHint[\s\S]*?Your report is ready/s);
+});
