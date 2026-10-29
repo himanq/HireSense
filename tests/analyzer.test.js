@@ -188,3 +188,16 @@ test("download controls are present, responsive, and wired to report generation"
   assert.match(script, /\["downloadMarkdownBtn",\s*"downloadTextBtn"\][\s\S]*?button\.disabled\s*=\s*false/s);
   assert.match(script, /downloadHint[\s\S]*?Your report is ready/s);
 });
+
+
+test("theme tokens are centralized and accessibility fallbacks are present", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const css = fs.readFileSync(path.join(__dirname, "..", "style.css"), "utf8");
+
+  assert.equal((css.match(/:root\\s*\\{/g) || []).length, 1, "theme tokens should have one source of truth");
+  assert.match(css, /--bg:\s*#090a0d/i);
+  assert.match(css, /--blue:\s*#c5f36b/i);
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /@media\\s*\\(prefers-reduced-motion:\\s*reduce\\)/);
+});
