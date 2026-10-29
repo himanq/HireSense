@@ -920,3 +920,30 @@ footer{border-top-color:rgba(255,255,255,.07)}
   .download-button-row { flex-direction:column; }
   .download-button-row .btn { width:100%; }
 }
+
+
+/* Accessibility and interaction polish */
+.report-download-actions {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  visibility: visible;
+}
+.download-button-row .btn:focus-visible,
+#analyzeBtn:focus-visible {
+  outline: 2px solid #8bffb0;
+  outline-offset: 3px;
+}
+.download-hint {
+  max-width: 52ch;
+  margin: 0 auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
