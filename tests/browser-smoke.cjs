@@ -67,11 +67,18 @@ function startServer() {
     console.log("PASS downloads: Markdown and TXT download events use expected filenames");
     assert.equal(await page.locator("label[for=resumeInput]").count(), 1, "Resume input must have a visible label");
     assert.equal(await page.locator("label[for=jobDescriptionInput]").count(), 1, "Job description input must have a visible label");
-    await page.locator("button[onclick=\"openModal(\\u0027contactModal\\u0027)\"]").first().click().catch(() => {});
+    const contactTrigger = page.locator("#navbar").getByRole("button", { name: "Contact" });
+    await contactTrigger.click();
+    const contactDialog = page.locator("#contactModal");
+    await contactDialog.waitFor({ state: "visible" });
     assert.equal(await page.locator("label[for=cName]").count(), 1, "Contact name must have a label");
     assert.equal(await page.locator("label[for=cEmail]").count(), 1, "Contact email must have a label");
     assert.equal(await page.locator("label[for=cMsg]").count(), 1, "Contact message must have a label");
-    console.log("PASS labels: resume, job description, and contact fields have associated labels");
+    assert.equal(await page.evaluate(() => document.activeElement.getAttribute("aria-label")), "Close contact dialog", "Opening dialog should move focus into it");
+    await page.keyboard.press("Escape");
+    assert.equal(await contactDialog.evaluate(el => el.classList.contains("open")), false, "Escape should close dialog");
+    assert.equal(await contactTrigger.evaluate(el => el === document.activeElement), true, "Closing dialog should restore focus");
+    console.log("PASS accessibility: form labels, dialog focus, Escape close, and focus restoration");
     assert.deepEqual(pageErrors, [], "No uncaught browser JavaScript errors expected");
     console.log("PASS runtime: no uncaught JavaScript errors");
   } catch (error) { console.error("FAIL browser smoke tests:", error); process.exitCode = 1; }
