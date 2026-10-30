@@ -209,14 +209,14 @@ test("usability audit fixes: one navigation landmark, visible resume label, sema
   const html = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
   const css = fs.readFileSync(path.join(__dirname, "..", "style.css"), "utf8");
 
-  assert.equal((html.match(/<nav\\b/gi) || []).length, 1, "page should have a single navigation landmark");
-  assert.match(html, /<label[^>]+for="resumeInput"[^>]*>RESUME TEXT<\\/label>/);
+  assert.equal((html.match(/<nav\b/gi) || []).length, 1, "page should have a single navigation landmark");
+  assert.match(html, /<label[^>]+for="resumeInput"[^>]*>RESUME TEXT<\/label>/);
   assert.equal((html.match(/class="feat-icon[^"]*" aria-hidden="true"/g) || []).length, 6);
   assert.equal((html.match(/<h4>Resume Completeness Score|<h4>Fact-Preserving Suggestions|<h4>Skill visibility|<h4>Clear next steps|<h4>Editable career assets|<h4>Client-side analysis/g) || []).length, 0);
-  assert.match(css, /\.hero-title\\s*\\{[^}]*font-size:\\s*clamp\\(2\\.25rem,\\s*4\\.8vw,\\s*3\\.6rem\\)/s);
-  assert.match(css, /\.hero-sub\\s*\\{[^}]*font-size:\\s*clamp\\(1rem,\\s*1\\.45vw,\\s*1\\.125rem\\)/s);
-  assert.match(css, /\.feat-icon\\s*\\{[^}]*width:\\s*48px/s);
-  assert.match(css, /--radius-sm:\\s*8px/);
-  assert.match(css, /--type-base:\\s*16px/);
-  assert.match(css, /@media\\s*\\(max-width:\\s*768px\\)/);
+  assert.match(css, /\.hero-title\s*\{[^}]*font-size:\s*clamp\(2\.25rem,\s*4\.8vw,\s*3\.6rem\)/s);
+  assert.match(css, /\.hero-sub\s*\{[^}]*font-size:\s*clamp\(1rem,\s*1\.45vw,\s*1\.125rem\)/s);
+  assert.match(css, /\.feat-icon\s*\{[^}]*width:\s*48px/s);
+  assert.match(css, /--radius-sm:\s*8px/);
+  assert.match(css, /--type-base:\s*16px/);
+  assert.match(css, /@media\s*\(max-width:\s*768px\)/);
 });
