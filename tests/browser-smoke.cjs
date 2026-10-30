@@ -31,7 +31,9 @@ function startServer() {
     const pageErrors = [];
     page.on("pageerror", error => pageErrors.push(error.message));
     await page.setViewportSize({ width:1280, height:900 });
-    await page.goto(started.url, { waitUntil:"networkidle" });
+    await page.route("https://fonts.googleapis.com/**", route => route.abort());
+    await page.route("https://fonts.gstatic.com/**", route => route.abort());
+    await page.goto(started.url, { waitUntil:"domcontentloaded" });
     const mdButton = page.locator("#downloadMarkdownBtn"), txtButton = page.locator("#downloadTextBtn");
     await mdButton.waitFor({ state:"visible" }); await txtButton.waitFor({ state:"visible" });
     assert.equal(await mdButton.isDisabled(), true, "Markdown should be locked before analysis");
