@@ -1005,19 +1005,7 @@ body { font-size: var(--type-base); line-height: 1.6; }
 }
 
 
-/* Floto usability audit fixes: consistent design tokens and readable small text. */
-:root {
-  --type-2xs: 12px;
-  --type-xs: 12px;
-  --type-sm: 14px;
-  --type-base: 16px;
-  --type-lg: 20px;
-  --type-xl: 24px;
-  --type-2xl: 32px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-}
+/* Floto usability audit fixes: reuse the existing design tokens and improve small-text readability. */
 html { scroll-padding-top: 88px; }
 body { font-family: 'Inter', sans-serif; font-size: var(--type-base); }
 h1, h2, h3, h4, h5, h6, button, input, textarea, select { font-family: 'Inter', sans-serif; }
