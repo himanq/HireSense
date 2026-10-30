@@ -109,6 +109,7 @@ function switchTab(name) {
 }
 
 async function sendWeb3(subject, message) {
+  if (!WEB3FORMS_KEY.trim()) return false;
   try {
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -138,7 +139,14 @@ async function sendContact() {
   if (!name)              { showToast("Apna naam daalo!", "warn"); return; }
   if (!email || !email.includes("@")) { showToast("Valid email daalo!", "warn"); return; }
   if (!msg)               { showToast("Message bhi likho!", "warn"); return; }
- 
+  if (!WEB3FORMS_KEY.trim()) {
+    const sub = encodeURIComponent(`HireSense Contact — ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+    window.location.href = `mailto:${OWNER_EMAIL}?subject=${sub}&body=${body}`;
+    showToast("Contact delivery is not configured; your email app was requested instead.", "info");
+    return;
+  }
+
   const btn = document.getElementById("contactSendBtn");
   btn.disabled = true;
   btn.innerHTML = `<span style="width:15px;height:15px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:inline-block"></span> Bhej raha hoon...`;
