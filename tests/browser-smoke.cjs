@@ -69,6 +69,7 @@ function startServer() {
     console.log("PASS downloads: Markdown and TXT download events use expected filenames");
     assert.equal(await page.locator("label[for=resumeInput]").count(), 1, "Resume input must have a visible label");
     assert.equal(await page.locator("label[for=jobDescriptionInput]").count(), 1, "Job description input must have a visible label");
+    await page.setViewportSize({ width:1280, height:900 });
     const contactTrigger = page.locator("#navbar").getByRole("button", { name: "Contact" });
     await contactTrigger.click();
     const contactDialog = page.locator("#contactModal");
