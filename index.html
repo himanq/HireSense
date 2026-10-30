@@ -14,7 +14,7 @@
 <!-- ══════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════ -->
-<nav id="navbar">
+<nav id="navbar" aria-label="Main navigation">
   <div class="nav-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon">H</div>
@@ -379,17 +379,17 @@ Include education, skills, work experience, and projects for the most accurate a
  
 <!-- Payment collection is disabled in this prototype. -->
 <!-- Contact Modal -->
-<div id="contactModal" class="overlay" onclick="overlayClick(event,'contactModal')">
+<div id="contactModal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="contactTitle" onclick="overlayClick(event,'contactModal')">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('contactModal')">×</button>
+    <button class="modal-close" type="button" aria-label="Close contact dialog" onclick="closeModal('contactModal')">×</button>
     <div id="contactForm">
       <div class="s-tag" style="margin-bottom:10px">📩 Contact</div>
-      <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Himanshu se Baat Karo</h2>
+      <h2 id="contactTitle" style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Himanshu se Baat Karo</h2>
       <p style="color:#64748b;font-size:13px;margin-bottom:20px">Form bharo aur Send karo — message seedha Himanshu ke inbox mein jayega.</p>
       <div style="display:flex;flex-direction:column;gap:12px">
-        <input class="inp" id="cName" placeholder="Tera naam *"/>
-        <input class="inp" id="cEmail" type="email" placeholder="Tera email * (reply yahan aayega)"/>
-        <textarea class="inp" id="cMsg" placeholder="Tera message *..." rows="4" style="resize:vertical;min-height:100px"></textarea>
+        <label class="job-match-label" for="cName">Name *</label><input class="inp" id="cName" name="name" autocomplete="name" required placeholder="Tera naam *"/>
+        <label class="job-match-label" for="cEmail">Email address *</label><input class="inp" id="cEmail" name="email" type="email" autocomplete="email" required placeholder="Tera email * (reply yahan aayega)"/>
+        <label class="job-match-label" for="cMsg">Message *</label><textarea class="inp" id="cMsg" name="message" required placeholder="Tera message *..." rows="4" style="resize:vertical;min-height:100px"></textarea>
         <button class="btn btn-blue" id="contactSendBtn" style="padding:13px;border-radius:12px;font-size:15px" onclick="sendContact()">
           📩 Send Message
         </button>
@@ -406,11 +406,11 @@ Include education, skills, work experience, and projects for the most accurate a
 </div>
  
 <!-- Sample Modal -->
-<div id="sampleModal" class="overlay" onclick="overlayClick(event,'sampleModal')">
+<div id="sampleModal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="sampleTitle" onclick="overlayClick(event,'sampleModal')">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('sampleModal')">×</button>
+    <button class="modal-close" type="button" aria-label="Close sample dialog" onclick="closeModal('sampleModal')">×</button>
     <div class="s-tag" style="margin-bottom:10px">📄 Sample</div>
-    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:14px">Here's What You'll Get</h2>
+    <h2 id="sampleTitle" style="font-size:1.4rem;font-weight:800;margin-bottom:14px">Here's What You'll Get</h2>
     <div class="sample-list">
       <div class="sample-item"><span class="sample-icon">📊</span><div><div class="sample-lbl">Resume Signal Score</div><div class="sample-val">Heuristic score with a clear breakdown</div></div><span class="sample-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></span></div>
       <div class="sample-item"><span class="sample-icon">⚠️</span><div><div class="sample-lbl">Issues Found</div><div class="sample-val">Potential gaps found in your resume text</div></div><span class="sample-dot" style="background:#ef4444;box-shadow:0 0 8px #ef4444"></span></div>
