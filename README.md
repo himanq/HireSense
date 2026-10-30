@@ -29,6 +29,10 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+## Playbook and readiness notes
+
+The [15-layer acceptance checklist](docs/15-layer-checklist.md) maps the attached SaaS playbook to this repository and clearly marks what is partial, not verified, or not applicable to the current static prototype. See `docs/system-design.md`, `docs/architecture.md`, `docs/security/threat-model.md`, and `docs/runbooks/` for the supporting decisions and operational steps.
+
 ## Run tests
 
 Install Node.js 20 or later, then run:
@@ -48,8 +52,21 @@ The Node test suite exercises the pure analysis/report functions and includes re
 ├── script.js          # UI interactions and DOM rendering
 ├── analyzer.js        # Pure rule-based checks and report templates
 ├── package.json
+├── AGENTS.md
+├── docs/
+│   ├── system-design.md
+│   ├── architecture.md
+│   ├── 15-layer-checklist.md
+│   ├── testing.md
+│   ├── hosting.md
+│   ├── api-conventions.md
+│   ├── security/threat-model.md
+│   ├── decisions/
+│   └── runbooks/
 └── tests/
-    └── analyzer.test.js
+    ├── analyzer.test.js
+    ├── browser-smoke.cjs
+    └── accessibility-smoke.cjs
 ```
 
 ## Privacy notes
