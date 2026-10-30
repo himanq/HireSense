@@ -14,20 +14,20 @@
 <!-- ══════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════ -->
-<nav id="navbar" aria-label="Main navigation">
+<header id="navbar">
   <div class="nav-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon">H</div>
       <span class="logo-text">HireSense<span>®</span></span>
     </button>
-    <div class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
       <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
       <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
       <button class="nav-btn" onclick="openModal('contactModal')">Contact</button>
-    </div>
+    </nav>
     <button class="btn btn-blue" onclick="scrollToSection('analyzer')">Get Started →</button>
   </div>
-</nav>
+</header>
  
 <main id="main-content">
 <!-- ══════════════════════════════════════
@@ -365,10 +365,10 @@ Include education, skills, work experience, and projects for the most accurate a
   <div class="footer-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:8px">H</div>
-      <span style="font-family:'Syne',sans-serif;font-weight:700;color:#a4aab7;font-size:14px">HireSense</span>
+      <span class="footer-brand-text">HireSense</span>
     </button>
     <p style="color:#94a3b8;font-size:13px">Built for students · Local-first by design · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
-    <div style="display:flex;gap:18px">
+    <div class="footer-links" aria-label="Footer links">
       <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
       <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
       <button class="nav-btn" onclick="openModal('contactModal')">Contact</button>
