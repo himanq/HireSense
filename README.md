@@ -37,7 +37,7 @@ Install Node.js 20 or later, then run:
 npm test
 ```
 
-The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub Actions runs the same suite on pushes and pull requests.
+The Node test suite exercises the pure analysis/report functions and includes regression checks for key usability fixes. GitHub Actions runs syntax checks, unit tests, and a Chromium browser smoke test on pushes and pull requests. The browser test checks desktop/mobile report-download visibility, analysis unlock behavior, file downloads, and uncaught page errors.
 
 ## Project structure
 
@@ -66,9 +66,18 @@ The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub A
 - Only add skills you can demonstrate. Never add unverified metrics, experience, users, uptime, or impact.
 - Do not use this prototype to rank or automatically reject candidates.
 
+## Usability and accessibility
+
+- One primary navigation landmark; the resume textarea has a visible label.
+- Feature cards use semantic heading levels and decorative icons are hidden from assistive technology.
+- Shared type and radius tokens improve consistency; body copy and feature icons have readable minimum sizes.
+- Mobile-specific hero and report-download layouts; visible keyboard focus and reduced-motion support.
+- The score remains a heuristic signal—not an ATS prediction or hiring recommendation.
+
 ## Roadmap
 
-- Improve automated accessibility and cross-browser checks.
+- Expand browser coverage to additional viewport sizes and browsers.
+- Verify the deployed GitHub Pages build separately from branch-level tests.
 
 ## Contributing
 
