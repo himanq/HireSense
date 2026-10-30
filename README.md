@@ -37,7 +37,7 @@ Install Node.js 20 or later, then run:
 npm test
 ```
 
-The Node test suite exercises the pure analysis/report functions and includes regression checks for key usability fixes. GitHub Actions runs syntax checks, unit tests, and a Chromium browser smoke test on pushes and pull requests. The browser test checks desktop/mobile report-download visibility, analysis unlock behavior, file downloads, and uncaught page errors.
+The Node test suite exercises the pure analysis/report functions and includes regression checks for key usability fixes. GitHub Actions runs syntax checks, unit tests, Chromium browser smoke tests, and an axe-core accessibility audit on pushes and pull requests. Browser checks cover desktop/mobile report-download visibility, analysis unlock behavior, file downloads, and uncaught page errors. Automated accessibility checks are a regression aid, not a substitute for keyboard, screen-reader, or real-device review.
 
 ## Project structure
 
