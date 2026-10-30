@@ -40,7 +40,7 @@ function serve() {
       id:v.id, impact:v.impact, description:v.help,
       nodes:v.nodes.map(n => ({target:n.target, summary:n.failureSummary})).slice(0,4)
     }));
-    for (const v of violations) console.log(`${v.impact?.toUpperCase() || "UNKNOWN"} ${v.id}: ${v.description} (${v.nodes.length} affected nodes)`);
+    for (const v of violations) console.log(`${v.impact?.toUpperCase() || "UNKNOWN"} ${v.id}: ${v.description}; affected: ${v.nodes.map(n => n.target.join(" ")).join(", ")}`);
     const blockers = violations.filter(v => ["critical","serious"].includes(v.impact));
     if (blockers.length) {
       console.error(JSON.stringify(blockers, null, 2));
