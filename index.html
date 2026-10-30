@@ -14,7 +14,7 @@
 <!-- ══════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════ -->
-<nav id="navbar">
+<nav id="navbar" aria-label="Main navigation">
   <div class="nav-inner">
     <button class="logo-btn" onclick="scrollToSection('hero')">
       <div class="logo-icon">H</div>
@@ -29,12 +29,13 @@
   </div>
 </nav>
  
+<main id="main-content">
 <!-- ══════════════════════════════════════
      HERO
 ══════════════════════════════════════ -->
 <section id="hero">
   <!-- static gradient bg — much faster than animated orbs -->
-  <div style="position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 60% at 20% 30%, rgba(29,78,216,.12) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 80% 60%, rgba(6,182,212,.07) 0%, transparent 70%);pointer-events:none"></div>
+  <div class="hero-atmosphere" aria-hidden="true"></div>
   <div class="grid-bg"></div>
  
   <div class="hero-inner">
@@ -86,12 +87,12 @@
     <div class="s-tag">✦ Features</div>
     <h2 class="sec-title">A sharper resume starts with clarity</h2>
     <div class="features-grid">
-      <div class="card"><div class="feat-icon" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3)">📊</div><h4>Resume Completeness Score</h4><p>Review common resume signals with an explainable heuristic breakdown.</p></div>
-      <div class="card"><div class="feat-icon" style="background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.3)">✍️</div><h4>Fact-Preserving Suggestions</h4><p>Improve wording without inventing metrics or achievements.</p></div>
-      <div class="card"><div class="feat-icon" style="background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.3)">🎯</div><h4>Skill visibility</h4><p>See which skills are visible in your text and which common signals may be missing.</p></div>
-      <div class="card"><div class="feat-icon" style="background:rgba(34,197,94,.12);border-color:rgba(139,255,176,.24)">🧭</div><h4>Clear next steps</h4><p>Turn review findings into a practical checklist for your next resume edit.</p></div>
-      <div class="card"><div class="feat-icon" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.3)">📄</div><h4>Editable career assets</h4><p>Generate editable resume, cover-letter and profile drafts from the current text.</p></div>
-      <div class="card"><div class="feat-icon" style="background:rgba(236,72,153,.15);border-color:rgba(236,72,153,.3)">🔒</div><h4>Client-side analysis</h4><p>Resume analysis runs locally in this prototype; the optional contact form is separate.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-blue" aria-hidden="true">📊</div><h3>Resume Completeness Score</h3><p>Review common resume signals with an explainable heuristic breakdown.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-cyan" aria-hidden="true">✍️</div><h3>Fact-Preserving Suggestions</h3><p>Improve wording without inventing metrics or achievements.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-violet" aria-hidden="true">🎯</div><h3>Skill visibility</h3><p>See which skills are visible in your text and which common signals may be missing.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-green" aria-hidden="true">🧭</div><h3>Clear next steps</h3><p>Turn review findings into a practical checklist for your next resume edit.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-amber" aria-hidden="true">📄</div><h3>Editable career assets</h3><p>Generate editable resume, cover-letter and profile drafts from the current text.</p></div>
+      <div class="card"><div class="feat-icon feat-icon-pink" aria-hidden="true">🔒</div><h3>Client-side analysis</h3><p>Resume analysis runs locally in this prototype; the optional contact form is separate.</p></div>
     </div>
   </div>
 </section>
@@ -127,6 +128,7 @@
     <p class="sec-sub">Local heuristic review · No account · Resume text stays in your browser</p>
     <div class="textarea-wrap">
       <div class="textarea-inner">
+        <label for="resumeInput" class="job-match-label resume-input-label">RESUME TEXT</label>
         <textarea id="resumeInput" class="resume-ta" placeholder="Paste your resume here...
  
 Include education, skills, work experience, and projects for the most accurate analysis."></textarea>
@@ -354,6 +356,8 @@ Include education, skills, work experience, and projects for the most accurate a
   </div>
 </div>
  
+</main>
+
 <!-- ══════════════════════════════════════
      FOOTER
 ══════════════════════════════════════ -->
@@ -363,7 +367,7 @@ Include education, skills, work experience, and projects for the most accurate a
       <div class="logo-icon" style="width:28px;height:28px;font-size:13px;border-radius:8px">H</div>
       <span style="font-family:'Syne',sans-serif;font-weight:700;color:#a4aab7;font-size:14px">HireSense</span>
     </button>
-    <p style="color:#1e293b;font-size:13px">Built for students · Local-first by design · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
+    <p style="color:#94a3b8;font-size:13px">Built for students · Local-first by design · Made with ♥  <span style="color:#22d3ee;font-weight:700"></span></p>
     <div style="display:flex;gap:18px">
       <button class="nav-btn" onclick="scrollToSection('features')">Features</button>
       <button class="nav-btn" onclick="scrollToSection('pricing')">Pricing</button>
@@ -378,17 +382,17 @@ Include education, skills, work experience, and projects for the most accurate a
  
 <!-- Payment collection is disabled in this prototype. -->
 <!-- Contact Modal -->
-<div id="contactModal" class="overlay" onclick="overlayClick(event,'contactModal')">
+<div id="contactModal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="contactTitle" onclick="overlayClick(event,'contactModal')">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('contactModal')">×</button>
+    <button class="modal-close" type="button" aria-label="Close contact dialog" onclick="closeModal('contactModal')">×</button>
     <div id="contactForm">
       <div class="s-tag" style="margin-bottom:10px">📩 Contact</div>
-      <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Himanshu se Baat Karo</h2>
-      <p style="color:#64748b;font-size:13px;margin-bottom:20px">Form bharo aur Send karo — message seedha Himanshu ke inbox mein jayega.</p>
+      <h2 id="contactTitle" style="font-size:1.35rem;font-weight:800;margin-bottom:4px">Himanshu se Baat Karo</h2>
+      <p style="color:#64748b;font-size:13px;margin-bottom:20px">Contact delivery is not configured in this demo. Send opens your email app as a fallback.</p>
       <div style="display:flex;flex-direction:column;gap:12px">
-        <input class="inp" id="cName" placeholder="Tera naam *"/>
-        <input class="inp" id="cEmail" type="email" placeholder="Tera email * (reply yahan aayega)"/>
-        <textarea class="inp" id="cMsg" placeholder="Tera message *..." rows="4" style="resize:vertical;min-height:100px"></textarea>
+        <label class="job-match-label" for="cName">Name *</label><input class="inp" id="cName" name="name" autocomplete="name" required placeholder="Tera naam *"/>
+        <label class="job-match-label" for="cEmail">Email address *</label><input class="inp" id="cEmail" name="email" type="email" autocomplete="email" required placeholder="Tera email * (reply yahan aayega)"/>
+        <label class="job-match-label" for="cMsg">Message *</label><textarea class="inp" id="cMsg" name="message" required placeholder="Tera message *..." rows="4" style="resize:vertical;min-height:100px"></textarea>
         <button class="btn btn-blue" id="contactSendBtn" style="padding:13px;border-radius:12px;font-size:15px" onclick="sendContact()">
           📩 Send Message
         </button>
@@ -405,11 +409,11 @@ Include education, skills, work experience, and projects for the most accurate a
 </div>
  
 <!-- Sample Modal -->
-<div id="sampleModal" class="overlay" onclick="overlayClick(event,'sampleModal')">
+<div id="sampleModal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="sampleTitle" onclick="overlayClick(event,'sampleModal')">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('sampleModal')">×</button>
+    <button class="modal-close" type="button" aria-label="Close sample dialog" onclick="closeModal('sampleModal')">×</button>
     <div class="s-tag" style="margin-bottom:10px">📄 Sample</div>
-    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:14px">Here's What You'll Get</h2>
+    <h2 id="sampleTitle" style="font-size:1.4rem;font-weight:800;margin-bottom:14px">Here's What You'll Get</h2>
     <div class="sample-list">
       <div class="sample-item"><span class="sample-icon">📊</span><div><div class="sample-lbl">Resume Signal Score</div><div class="sample-val">Heuristic score with a clear breakdown</div></div><span class="sample-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></span></div>
       <div class="sample-item"><span class="sample-icon">⚠️</span><div><div class="sample-lbl">Issues Found</div><div class="sample-val">Potential gaps found in your resume text</div></div><span class="sample-dot" style="background:#ef4444;box-shadow:0 0 8px #ef4444"></span></div>
@@ -424,7 +428,7 @@ Include education, skills, work experience, and projects for the most accurate a
 <!-- ══════════════════════════════════════
      TOAST
 ══════════════════════════════════════ -->
-<div id="toast">
+<div id="toast" role="status" aria-live="polite" aria-atomic="true">
   <span id="toastIcon"></span>
   <span id="toastMsg"></span>
 </div>

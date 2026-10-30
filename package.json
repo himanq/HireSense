@@ -4,7 +4,9 @@
   "private": true,
   "description": "Client-side heuristic resume review toolkit",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "test:accessibility": "node tests/accessibility-smoke.cjs",
+    "test:all": "npm test && npm run test:accessibility"
   },
   "engines": {
     "node": ">=20"

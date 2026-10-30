@@ -44,13 +44,23 @@ document.getElementById("resumeInput").addEventListener("input", function () {
 });
  
 
+let lastModalTrigger = null;
+
 function openModal(id) {
-  document.getElementById(id).classList.add("open");
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  lastModalTrigger = document.activeElement;
+  modal.classList.add("open");
   document.body.style.overflow = "hidden";
+  const firstControl = modal.querySelector("button, input, textarea, select, a[href], [tabindex]:not([tabindex='-1'])");
+  if (firstControl) firstControl.focus();
 }
 function closeModal(id) {
-  document.getElementById(id).classList.remove("open");
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove("open");
   document.body.style.overflow = "";
+  if (lastModalTrigger && typeof lastModalTrigger.focus === "function") lastModalTrigger.focus();
   // Reset contact form if closing
   if (id === "contactModal") {
     document.getElementById("contactForm").style.display = "block";
@@ -63,6 +73,28 @@ function closeModal(id) {
     btn.disabled = false;
   }
 }
+
+// Keep keyboard focus inside an open dialog and support Escape to close it.
+document.addEventListener("keydown", event => {
+  const modal = document.querySelector(".overlay.open");
+  if (!modal) return;
+  if (event.key === "Escape") {
+    const id = modal.id;
+    closeModal(id);
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const controls = [...modal.querySelectorAll("button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), a[href], [tabindex]:not([tabindex='-1'])")]
+    .filter(el => el.getClientRects().length > 0);
+  if (!controls.length) { event.preventDefault(); return; }
+  const first = controls[0], last = controls[controls.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault(); last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault(); first.focus();
+  }
+});
+
 function overlayClick(e, id) {
   if (e.target === e.currentTarget) closeModal(id);
 }
@@ -109,6 +141,7 @@ function switchTab(name) {
 }
 
 async function sendWeb3(subject, message) {
+  if (!WEB3FORMS_KEY.trim()) return false;
   try {
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -138,7 +171,14 @@ async function sendContact() {
   if (!name)              { showToast("Apna naam daalo!", "warn"); return; }
   if (!email || !email.includes("@")) { showToast("Valid email daalo!", "warn"); return; }
   if (!msg)               { showToast("Message bhi likho!", "warn"); return; }
- 
+  if (!WEB3FORMS_KEY.trim()) {
+    const sub = encodeURIComponent(`HireSense Contact — ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+    window.location.href = `mailto:${OWNER_EMAIL}?subject=${sub}&body=${body}`;
+    showToast("Contact delivery is not configured; your email app was requested instead.", "info");
+    return;
+  }
+
   const btn = document.getElementById("contactSendBtn");
   btn.disabled = true;
   btn.innerHTML = `<span style="width:15px;height:15px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;display:inline-block"></span> Bhej raha hoon...`;

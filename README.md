@@ -29,6 +29,10 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+## Playbook and readiness notes
+
+The [15-layer acceptance checklist](docs/15-layer-checklist.md) maps the attached SaaS playbook to this repository and clearly marks what is partial, not verified, or not applicable to the current static prototype. See `docs/system-design.md`, `docs/architecture.md`, `docs/security/threat-model.md`, and `docs/runbooks/` for the supporting decisions and operational steps.
+
 ## Run tests
 
 Install Node.js 20 or later, then run:
@@ -37,7 +41,7 @@ Install Node.js 20 or later, then run:
 npm test
 ```
 
-The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub Actions runs the same suite on pushes and pull requests.
+The Node test suite exercises the pure analysis/report functions and includes regression checks for key usability fixes. GitHub Actions runs syntax checks, unit tests, Chromium browser smoke tests, and an axe-core accessibility audit on pushes and pull requests. Browser checks cover desktop/mobile report-download visibility, analysis unlock behavior, file downloads, and uncaught page errors. Automated accessibility checks are a regression aid, not a substitute for keyboard, screen-reader, or real-device review.
 
 ## Project structure
 
@@ -48,8 +52,21 @@ The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub A
 ├── script.js          # UI interactions and DOM rendering
 ├── analyzer.js        # Pure rule-based checks and report templates
 ├── package.json
+├── AGENTS.md
+├── docs/
+│   ├── system-design.md
+│   ├── architecture.md
+│   ├── 15-layer-checklist.md
+│   ├── testing.md
+│   ├── hosting.md
+│   ├── api-conventions.md
+│   ├── security/threat-model.md
+│   ├── decisions/
+│   └── runbooks/
 └── tests/
-    └── analyzer.test.js
+    ├── analyzer.test.js
+    ├── browser-smoke.cjs
+    └── accessibility-smoke.cjs
 ```
 
 ## Privacy notes
@@ -66,9 +83,18 @@ The tests exercise the pure analysis/report functions in `analyzer.js`. GitHub A
 - Only add skills you can demonstrate. Never add unverified metrics, experience, users, uptime, or impact.
 - Do not use this prototype to rank or automatically reject candidates.
 
+## Usability and accessibility
+
+- One primary navigation landmark; the resume textarea has a visible label.
+- Feature cards use semantic heading levels and decorative icons are hidden from assistive technology.
+- Shared type and radius tokens improve consistency; body copy and feature icons have readable minimum sizes.
+- Mobile-specific hero and report-download layouts; visible keyboard focus and reduced-motion support.
+- The score remains a heuristic signal—not an ATS prediction or hiring recommendation.
+
 ## Roadmap
 
-- Improve automated accessibility and cross-browser checks.
+- Expand browser coverage to additional viewport sizes and browsers.
+- Verify the deployed GitHub Pages build separately from branch-level tests.
 
 ## Contributing
 
