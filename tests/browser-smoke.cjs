@@ -84,5 +84,5 @@ function startServer() {
     assert.deepEqual(pageErrors, [], "No uncaught browser JavaScript errors expected");
     console.log("PASS runtime: no uncaught JavaScript errors");
   } catch (error) { console.error("FAIL browser smoke tests:", error); process.exitCode = 1; }
-  finally { if (browser) await browser.close(); if (server) await new Promise(resolve => server.close(resolve)); }
+  finally { if (browser) await browser.close(); if (server) { server.closeAllConnections?.(); await new Promise(resolve => server.close(resolve)); } }
 })();
