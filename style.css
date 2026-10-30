@@ -1003,3 +1003,75 @@ body { font-size: var(--type-base); line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Floto usability audit fixes: consistent design tokens and readable small text. */
+:root {
+  --type-2xs: 12px;
+  --type-xs: 12px;
+  --type-sm: 14px;
+  --type-base: 16px;
+  --type-lg: 20px;
+  --type-xl: 24px;
+  --type-2xl: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+html { scroll-padding-top: 88px; }
+body { font-family: 'Inter', sans-serif; font-size: var(--type-base); }
+h1, h2, h3, h4, h5, h6, button, input, textarea, select { font-family: 'Inter', sans-serif; }
+code, pre, .preview-top, .preview-foot, .preview-kicker, .hero-badge, .stat-lbl,
+.s-tag, .score-badge, .tag, .badge-red, .badge-green, .pro-badge {
+  font-family: 'JetBrains Mono', monospace;
+}
+#navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; }
+.nav-inner { min-height: 64px; }
+button, .btn { border-radius: var(--radius-md); }
+button.btn { min-height: 44px; }
+.btn-blue, .btn-ghost, .btn-green { border-radius: var(--radius-md); }
+.card, .price-card, .r-card, .pro-card, .jd-card,
+.job-match-results, .job-match-panel, .textarea-inner, .resume-ta, .inp,
+.modal, .upgrade-cta { border-radius: var(--radius-md); }
+.hero-title {
+  font-size: clamp(2.25rem, 4.8vw, 3.6rem);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+  margin-bottom: 16px;
+}
+.hero-sub { font-size: clamp(1rem, 1.45vw, 1.125rem); line-height: 1.65; }
+.hero-badge, .s-tag { font-size: 12px; }
+.stat-lbl, .preview-top, .preview-foot, .preview-kicker, .tag, .badge-red, .badge-green, .pro-badge {
+  font-size: 12px;
+}
+.card p, .plan-features li, .sec-sub, .wc-text, .download-hint,
+.job-match-note, .job-match-panel p, .job-match-panel li {
+  font-size: var(--type-sm);
+  line-height: 1.65;
+}
+.features-grid .card h3 { font-size: 18px; line-height: 1.4; margin-bottom: 8px; }
+.feat-icon { width: 48px; height: 48px; font-size: 24px; border-radius: var(--radius-md); }
+.price-card .plan-features { max-width: 480px; margin-left: auto; margin-right: auto; }
+.plan-features { text-align: left; }
+.footer-brand-text { font-family: 'Inter', sans-serif; font-weight: 700; color: #a4aab7; font-size: 14px; }
+.footer-links { display: flex; gap: 18px; align-items: center; }
+button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+@media (max-width: 768px) {
+  #hero { min-height: auto; padding-top: 104px; padding-bottom: 56px; }
+  .hero-title { font-size: clamp(2.1rem, 9vw, 3rem); line-height: 1.05; }
+  .hero-sub { font-size: 16px; }
+  .hero-stats { row-gap: 18px; }
+  .hero-stats .stat { width: 50%; padding: 0 8px; border-right: 0; }
+  .stat-lbl { font-size: 12px; }
+  .preview-top, .preview-foot { font-size: 12px; }
+  .footer-inner { gap: 18px; flex-wrap: wrap; }
+  .footer-links { gap: 12px; flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(2rem, 9vw, 2.7rem); }
+  .hero-badge { font-size: 12px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
