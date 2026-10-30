@@ -29,7 +29,9 @@ function serve() {
     const started = await serve(); server = started.server;
     browser = await chromium.launch({headless:true});
     const page = await browser.newPage({viewport:{width:1280,height:900}});
-    await page.goto(started.url, {waitUntil:"networkidle"});
+    await page.route("https://fonts.googleapis.com/**", route => route.abort());
+    await page.route("https://fonts.gstatic.com/**", route => route.abort());
+    await page.goto(started.url, {waitUntil:"domcontentloaded"});
     await page.addScriptTag({path:require.resolve("axe-core/axe.min.js")});
     const results = await page.evaluate(async () => await axe.run(document, {
       runOnly: {type:"tag", values:["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa","best-practice"]}
