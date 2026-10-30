@@ -12,6 +12,15 @@
   --text: #f5f5f4;
   --muted: #a1a1aa;
   --dim: #71717a;
+  --type-xs: 12px;
+  --type-sm: 14px;
+  --type-base: 16px;
+  --type-lg: 20px;
+  --type-xl: 24px;
+  --type-2xl: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -956,17 +965,7 @@ footer{border-top-color:rgba(255,255,255,.07)}
 button.btn { border-radius: 12px !important; padding: 11px 18px !important; font-size: 14px !important; }
 .hero-btns .btn { padding: 13px 22px !important; font-size: 16px !important; }
 /* ── Usability audit refinements ─────────────────────────── */
-:root {
-  --type-xs: 12px;
-  --type-sm: 14px;
-  --type-base: 16px;
-  --type-lg: 20px;
-  --type-xl: 24px;
-  --type-2xl: 32px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-}
+
 body { font-size: var(--type-base); line-height: 1.6; }
 .hero-title { font-size: clamp(2.25rem, 4.8vw, 3.6rem); line-height: 1.04; letter-spacing: -.04em; margin-bottom: 16px; }
 .hero-sub { font-size: clamp(1rem, 1.45vw, 1.125rem); line-height: 1.65; max-width: 600px; margin: 0 auto 26px; color: #b4bbc5; }
