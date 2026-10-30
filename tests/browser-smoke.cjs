@@ -41,7 +41,9 @@ function startServer() {
     assert.equal(await mdButton.isVisible(), true); assert.equal(await txtButton.isVisible(), true);
     const mdBox = await mdButton.boundingBox(), txtBox = await txtButton.boundingBox();
     assert.ok(mdBox && txtBox && mdBox.width > 0 && txtBox.width > 0, "Mobile buttons need measurable non-zero layout");
-    console.log("PASS mobile: both download controls remain visible");
+    const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+    assert.ok(pageWidth <= 390, `Mobile page should not overflow horizontally (scrollWidth=${pageWidth})`);
+    console.log("PASS mobile: download controls visible and no horizontal page overflow");
     const resume = [
       "Himanshu Dixit", "Email: himanshu@example.com | Phone: 9876543210", "SUMMARY",
       "Computer Science student interested in frontend and software development.", "EDUCATION",
@@ -63,6 +65,13 @@ function startServer() {
     const [txtDownload] = await Promise.all([page.waitForEvent("download", { timeout:5000 }), txtButton.click()]);
     assert.equal(txtDownload.suggestedFilename(), "hiresense-resume-review.txt");
     console.log("PASS downloads: Markdown and TXT download events use expected filenames");
+    assert.equal(await page.locator("label[for=resumeInput]").count(), 1, "Resume input must have a visible label");
+    assert.equal(await page.locator("label[for=jobDescriptionInput]").count(), 1, "Job description input must have a visible label");
+    await page.locator("button[onclick=\"openModal(\\u0027contactModal\\u0027)\"]").first().click().catch(() => {});
+    assert.equal(await page.locator("label[for=cName]").count(), 1, "Contact name must have a label");
+    assert.equal(await page.locator("label[for=cEmail]").count(), 1, "Contact email must have a label");
+    assert.equal(await page.locator("label[for=cMsg]").count(), 1, "Contact message must have a label");
+    console.log("PASS labels: resume, job description, and contact fields have associated labels");
     assert.deepEqual(pageErrors, [], "No uncaught browser JavaScript errors expected");
     console.log("PASS runtime: no uncaught JavaScript errors");
   } catch (error) { console.error("FAIL browser smoke tests:", error); process.exitCode = 1; }
