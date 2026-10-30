@@ -217,7 +217,7 @@ test("usability audit fixes: one navigation landmark, visible resume label, sema
   assert.match(auditCss, /\.hero-title\s*\{[^}]*font-size:\s*clamp\(2\.25rem,\s*4\.8vw,\s*3\.6rem\)/s);
   assert.match(auditCss, /\.hero-sub\s*\{[^}]*font-size:\s*clamp\(1rem,\s*1\.45vw,\s*1\.125rem\)/s);
   assert.match(auditCss, /\.feat-icon\s*\{[^}]*width:\s*48px/s);
-  assert.match(auditCss, /--radius-sm:\s*8px/);
-  assert.match(auditCss, /--type-base:\s*16px/);
+  assert.match(css, /--radius-sm:\s*8px/);
+  assert.match(css, /--type-base:\s*16px/);
   assert.match(auditCss, /@media\s*\(max-width:\s*768px\)/);
 });
