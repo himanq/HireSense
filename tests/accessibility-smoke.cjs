@@ -49,5 +49,5 @@ function serve() {
       console.log(`PASS axe-core: no critical/serious violations; ${violations.length} lower-impact finding(s) need review.`);
     }
   } catch (error) { console.error("FAIL accessibility audit:", error); process.exitCode = 1; }
-  finally { if (browser) await browser.close(); if (server) await new Promise(resolve => server.close(resolve)); }
+  finally { if (browser) await browser.close(); if (server) { server.closeAllConnections?.(); await new Promise(resolve => server.close(resolve)); } }
 })();
